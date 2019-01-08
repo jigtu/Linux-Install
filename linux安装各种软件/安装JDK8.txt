@@ -1,0 +1,12 @@
+1、下载 下载到opt目录下
+    可使用wget命令 也可自行上传
+2、解压  tar -zxvf jdk-8u181-linux-x64.tar.gz
+    mv jdk1.8.0_181 /usr/local
+3、配置环境变量
+    vim /etc/profile.d/java.sh
+    添加如下内容：
+    export JAVA_HOME=/usr/java/jdk1.8.0_191/
+    export CLASSPATH=/usr/java/jdk1.8.0_191/lib
+    export PATH=$PATH:$JAVA_HOME/bin
+4、让其即时生效
+    source /etc/profile

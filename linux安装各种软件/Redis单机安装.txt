@@ -1,0 +1,49 @@
+首先在opt目录下创建redis
+    mkdir -p  /opt/redis 
+    cd /opt/redis 
+下载安装包    
+    wget http://download.redis.io/releases/redis-4.0.11.tar.gz
+解压缩：
+    tar -zxvf redis-4.0.9.tar.gz
+    cd  redis-4.0.9
+    
+    进行编译 yum install gcc-c++
+        make MALLOC=libc
+    完成后：
+        cd src
+    进行安装
+        make install
+    查看是否安装成功
+        ./redis-server
+    复制启动文件 cd ../(返回上层目录)
+    cp utils/redis_init_script /etc/init.d/redis   
+    在etc目录创建redis    
+    mkdir -p /etc/redis
+    复制配置文件 并命名为6379.conf
+    cp redis.conf /etc/redis/6379.conf
+    修改如下配置
+    
+    bind 127.0.0.1 #注销
+    daemonize yes #136行：开启后台运行
+    vim /etc/redis/6379.conf
+    requirepass 123456 #500行开启密码
+    
+配置开机启动
+    chkconfig  redis on 
+如果出现 service redisd does not support chkconfig　
+    vim /etc/init.d/redis
+添加配置
+    # chkconfig:   2345 90 10
+    # description:  Redis is a persistent key-value database
+
+    
+第二种 安装Remi的软件源，安装命令如下：
+1、安装Remi
+    yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+2、执行安装命令 
+    yum --enablerepo=remi install redis
+    配置开机启动
+    service redis start
+    chkconfig redis on
+    whereis redis 找到redis的配置文件目录 修改对应配置即可
+    找到/etc/ redis.conf

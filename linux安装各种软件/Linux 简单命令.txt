@@ -1,0 +1,83 @@
+## 开启端口 centos 7 (前提是使用的firewall 而不是iptables)
+##开启： 
+    firewall-cmd --zone=public --add-port=80/tcp --permanent
+##重启： 
+    firewall-cmd --reload 
+##查看： 
+    firewall-cmd --zone=public --query-port=80/tcp
+##删除： 
+    firewall-cmd --zone=public --remove-port=80/tcp --permanent
+    
+##复制到指定的服务器的位置 
+    scp /home/space/music/1.mp3 root@192.168.247.207:/software
+
+##跳转到指定服务器（ssh远程登录）
+    ssh root@192.168.247.207
+
+##导出历史命令到a.txt文件
+    cat ~/.bash_history > a.txt
+    
+##清除登陆系统成功的记录
+    echo > /var/log/wtmp
+    last //此时即查不到用户登录信息
+
+##清除登陆系统失败的记录
+    echo > /var/log/btmp
+    lastb //查不到登陆失败信息
+    
+##清除历史执行命令    
+    history -c //清空历史执行命令
+
+##创建用户
+    useradd user 
+
+##修改密码
+    passwd user
+
+##删除用户以及用户目录
+    userdel -r -f user 
+
+##查看是否安装mysql
+    rpm -qa | grep mysql
+
+##卸载软件-强制
+    rpm -e --nodeps xx
+
+##find 命令 
+    find / -name mysql
+
+##which 用来查找系统PATH目录下的可执行文件
+    which mysql
+
+##可以用来查找二进制（命令）、源文件、man文件。这条命令可以是通过文件索引数据库而非PATH来查找
+    whereis redis
+
+##yum 安装软件
+    yum install 软件名 -y
+
+## yum 卸载软件
+    yum remove 
+
+##文件或目录的inode(最前面的数字)
+   ls -i 
+   eg: 9834008 assembly-v1.0.jar  9834004 config  9834006 logs  9834007 start.sh
+
+##删除文件 可以解决gbk乱码删除不掉的困扰
+    find -inum 9834008 -delete 删除文件
+
+##删除非空目录
+    find -inum 9834008 -exec rm -rf {} \;
+
+##curl 命令发送post请求 上传文件
+    curl https://wap.cintel.com.cn/anti_theft/api/appeal/appealPeopleUpload.do -F "file=@1.mp4" -F "openid=123456789"
+
+##检查linux内核版本
+    uname -r
+    
+## 更新
+    yum update -y 
+
+## 查看安装过的软件
+    yum list installed | grep "软件名称"
+## 卸载软件 eg：
+    yum remove -y docker-ce.x86_64 0:18.03.0.ce-1.el7.centos

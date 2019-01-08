@@ -1,0 +1,31 @@
+1、下载kafka
+    wget https://mirrors.cnnic.cn/apache/kafka/2.0.0/kafka_2.12-2.0.0.tgz
+2、解压kafka
+    tar zxf kafka_2.12-2.0.0.tgz       
+3、修改配置文件
+    cd kafka_2.12-2.0.0
+    vim config/server.properties
+    配置：
+    listeners=PLAINTEXT://ip:9092
+    advertised.listeners=PLAINTEXT://ip:9092
+    
+4、启动kafka 后台启动
+    bin/kafka-server-start.sh -daemon config/server.properties &
+    bin/kafka-server-stop.sh 停止
+5、端口9092记得开放 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

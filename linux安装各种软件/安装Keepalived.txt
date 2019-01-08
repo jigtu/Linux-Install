@@ -1,0 +1,30 @@
+cd /opt
+wget http://www.keepalived.org/software/keepalived-2.0.2.tar.gz
+tar -zxvf keepalived-2.0.2.tar.gz -C /usr/local
+cd /usr/local
+先安装openssl openssl-devel
+yum install openssl openssl-devel
+
+./configure -- prefix=/usr/local/keepalived
+
+make && make install
+
+配置成系统服务
+mkdir /etc/keepalived
+复制配置文件
+cp /usr/local/keepalived/etc/keepalived/keepalived.conf /etc/keepalived/
+
+复制启动脚本
+cp /usr/local/keepalived/etc/sysconfig/keepalived /etc/keepalived/
+
+
+
+
+直接yum 安装1.3.5版本
+yum install keepalived -y
+
+修改时区
+
+# timedatectl list-timezones |grep Shanghai    #查找中国时区的完整名称
+Asia/Shanghai
+# timedatectl set-timezone Asia/Shanghai    #其他时区以此类推

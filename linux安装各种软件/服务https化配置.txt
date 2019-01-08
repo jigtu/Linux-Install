@@ -1,0 +1,74 @@
+文章地址
+：https://cloud.tencent.com/document/product/400/4143
+
+1. Apache 2.x 证书部署
+1.1 获取证书
+Apache文件夹内获得证书文件 1_root_bundle.crt，2_www.domain.com_cert.crt 和私钥文件 3_www.domain.com.key,
+1_root_bundle.crt 文件包括一段证书代码 “-----BEGIN CERTIFICATE-----”和“-----END CERTIFICATE-----”,
+2_www.domain.com_cert.crt 文件包括一段证书代码 “-----BEGIN CERTIFICATE-----”和“-----END CERTIFICATE-----”,
+3_www.domain.com.key 文件包括一段私钥代码“-----BEGIN RSA PRIVATE KEY-----”和“-----END RSA PRIVATE KEY-----”。
+
+1.2 证书安装
+编辑Apache根目录下 conf/httpd.conf 文件，
+找到 #LoadModule ssl_module modules/mod_ssl.so 和 #Include conf/extra/httpd-ssl.conf，去掉前面的#号注释；
+编辑Apache根目录下 conf/extra/httpd-ssl.conf 文件，修改如下内容：
+
+ <VirtualHost 0.0.0.0:443>
+    DocumentRoot "/var/www/html"
+    ServerName www.domain.com
+    SSLEngine on
+    SSLCertificateFile /usr/local/apache/conf/2_www.domain.com_cert.crt
+    SSLCertificateKeyFile /usr/local/apache/conf/3_www.domain.com.key
+    SSLCertificateChainFile /usr/local/apache/conf/1_root_bundle.crt
+</VirtualHost>
+配置完成后，重新启动 Apache 
+  
+2. Nginx 证书部署
+2.1 获取证书
+Nginx文件夹内获得SSL证书文件 1_www.domain.com_bundle.crt 和私钥文件 2_www.domain.com.key,
+1_www.domain.com_bundle.crt 文件包括两段证书代码 “-----BEGIN CERTIFICATE-----”和“-----END CERTIFICATE-----”,
+2_www.domain.com.key 文件包括一段私钥代码“-----BEGIN RSA PRIVATE KEY-----”和“-----END RSA PRIVATE KEY-----”。
+
+2.2 证书安装
+将域名 www.domain.com 的证书文件1_www.domain.com_bundle.crt 、私钥文件2_www.domain.com.key保存到同一个目录，例如/usr/local/nginx/conf目录下。
+更新Nginx根目录下 conf/nginx.conf 文件如下：
+
+ server {
+        listen 443;
+        server_name www.domain.com; #填写绑定证书的域名
+        ssl on;
+        ssl_certificate 1_www.domain.com_bundle.crt;
+        ssl_certificate_key 2_www.domain.com.key;
+        ssl_session_timeout 5m;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #按照这个协议配置
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;#按照这个套件配置
+        ssl_prefer_server_ciphers on;
+        location / {
+            root   html; #站点目录
+            index  index.html index.htm;
+        }
+    }
+配置完成后，先用bin/nginx –t来测试下配置是否有误，正确无误的话，重启nginx。就可以使   
+如果要使用80端口转发需要配置
+server{
+
+}  
+  
+4. Tomcat 证书部署
+4.1 获取证书
+如果申请证书时有填写私钥密码，下载可获得Tomcat文件夹，其中有密钥库 www.domain.com.jks；
+如果没有填写私钥密码，证书下载包的Tomcat文件夹中包括密钥库文件www.domain.com.jks 与密钥库密码文件keystorePass.txt
+当用户选择粘贴CSR时，不提供Tomcat证书文件的下载，需要用户手动转换格式生成,操作方法如下：
+
+可以通过 Nginx 文件夹内证书文件和私钥文件生成jks格式证书
+转换工具：https://www.trustasia.com/tools/cert-converter.htm
+使用工具时注意填写 密钥库密码（就是tomcat目录下的keystorePass.txt里面的密码） ，安装证书时配置文件中需要填写。
+
+4.2 证书安装
+配置SSL连接器，将www.domain.com.jks文件存放到conf目录下，然后配置同目录下的server.xml文件：
+
+ <Connector port="443" protocol="HTTP/1.1" SSLEnabled="true"
+    maxThreads="150" scheme="https" secure="true"
+    keystoreFile="conf/www.domain.com.jks"
+    keystorePass="changeit"
+    clientAuth="false" sslProtocol="TLS" />  

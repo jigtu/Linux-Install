@@ -1,0 +1,29 @@
+1、下载mysql的zip版本
+2、解压到想要的位置
+3、创建my.ini配置文件
+4、内容如下
+	[mysqld]
+	basedir = D:\DevInstall\MySQL\MySQL
+	datadir = D:\DevInstall\MySQL\DBs
+	port = 3306
+	sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES 
+	character-set-server = utf8mb4
+	performance_schema_max_table_instances = 600
+	table_definition_cache = 400
+	table_open_cache = 256
+	[mysql]
+	default-character-set = utf8mb4
+	[client]
+	default-character-set = utf8mb4
+	
+5、使用管理员启动cmd命令 进入到mysql的bin目录 eg：D:\DevInstall\MySQL\MySQL\bin
+6、执行 mysqld --initialize --user=mysql --console 
+   提示  [Server] 'NO_ZERO_DATE', 'NO_ZERO_IN_DATE' and 'ERROR_FOR_DIVISION_BY_ZERO' sql modes 无影响
+   记下密码：[Server] A temporary password is generated for root@localhost: xijufhAea3+W  
+7、执行安装mysql服务命令 mysqld --install 服务名 eg：mysqld --install MySQL
+8、执行 mysql-uroot -p 回车后输入密码 
+9、修改密码 set password='root'; 修改密码 重新登录即可
+10、连接报错 
+     1、use mysql;
+     2、alter user 'root'@'localhost' identified with mysql_native_password by '********';
+     3、flush privileges;

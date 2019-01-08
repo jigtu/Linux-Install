@@ -1,0 +1,5 @@
+git tag 查看标签
+git branch  查看分支
+git tag -a rg_web3.2 -m "rg_web3.2标签" 打标签命令
+git tag  查看标签 
+git push origin rg_web3.2 需要推送道服务器

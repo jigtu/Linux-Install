@@ -1,0 +1,174 @@
+##  第一步：检查版本
+    uname -r 
+
+##  第二步：更新yum
+    yum update -y
+    
+## 第三步：卸载旧版本docker
+    sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-selinux \
+                  docker-engine-selinux \
+                  docker-engine
+## 第四步：安装docker   
+    yum install docker-ce  
+提示 No package docker-ce available  
+
+执行：  
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+提示："TCP connection reset by peer"  
+  
+切换阿里源
+sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+    
+## 查看所有版本   
+    yum list docker-ce --showduplicates | sort -r
+    
+## 安装特定版本 进行组合  
+    yum install docker-ce-18.06.0.ce-3
+    
+    第一行的前半部分-第二行的前半部分
+    docker-ce-18.06.0.ce-3
+    docker-ce.x86_64            18.06.0.ce-3.el7                    docker-ce-stable
+    
+## 启用edge以及test仓库
+     sudo yum-config-manager --enable docker-ce-edge
+     sudo yum-config-manager --enable docker-ce-test
+     
+## 禁用edge以及test仓库         
+     sudo yum-config-manager --disable docker-ce-edge
+     sudo yum-config-manager --disable docker-ce-test
+     
+##  第五步：开启docker服务
+    systemctl start docker
+
+## 第六步配置镜像加速 可在阿里云控制台搜索镜像加速器 会有专属的镜像加速器地址
+   1、 sudo mkdir -p /etc/docker
+   2、 sudo tee /etc/docker/daemon.json <<-'EOF'
+    {
+      "registry-mirrors": ["https://镜像地址.mirror.aliyuncs.com"]
+    }
+    EOF
+   3、 sudo systemctl daemon-reload
+   4、 sudo systemctl restart docker
+    
+##  查询docker信息
+    docker version 或者 docker info  
+    
+##  docker hello word
+    docker run hello-world
+    
+## 查看镜像列表
+    docker images
+    
+## 查看docker命令清单
+    docker 或者 docker help
+    
+## 搜索镜像，利用search命令
+    docker search jdk    
+    
+## 拉取镜像，利用pull命令
+    docker pull jboss/base-jdk:8  
+    
+## 查看已下载镜像列表,利用images命令    
+    docker images jboss/base-jdk:8
+    
+## 镜像拷贝，同时重命名，利用tag命令
+    #比如，想创建拷贝一个镜像`hello-wrold`，同时命名为`lqdev.cn/hello-world:1`
+    docker tag hello-world lqdev.cn/hello-world:1  
+    
+## 镜像拷贝，同时重命名，利用tag命令
+    docker tag hello-world lqdev.cn/hello-world:1
+    
+## 基于Dockerfile创建一个新的镜像，利用build命令    
+    docker build -t lqdev.cn/first:1
+    
+## 删除镜像，利用rmi命令(这里需要注意，当镜像有容器在使用时，是无法删除的，需要先删除容器再来删除镜像。) 
+    docker rm container_id 根据容器id删除容器 
+    docker rmi jboss/base-jdk:8  或者根据images_id删除 docker rmi b123d943e165 
+
+## 运行容器，利用run命令。
+    docker run hello-world
+    参数定义：
+    -a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项；
+    -d: 后台运行容器，并返回容器ID；
+    -i: 以交互模式运行容器，通常与 -t 同时使用；
+    -p: 端口映射，格式为：主机(宿主)端口:容器端口
+    -t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；
+    --name="nginx-lb": 为容器指定一个名称；
+    --dns 8.8.8.8: 指定容器使用的DNS服务器，默认和宿主一致；
+    --dns-search example.com: 指定容器DNS搜索域名，默认和宿主一致；
+    -h "mars": 指定容器的hostname；
+    -e username="ritchie": 设置环境变量；
+    --env-file=[]: 从指定文件读入环境变量；
+    --cpuset="0-2" or --cpuset="0,1,2": 绑定容器到指定CPU运行；
+    -m :设置容器使用内存最大值；
+    --net="bridge": 指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型；
+    --link=[]: 添加链接到另一个容器；
+    --expose=[]: 开放一个端口或一组端口；
+    
+eg:根据镜像后台启动镜像
+    
+    docker run --name  tomcat -d tomcat
+    
+将主机端口映射到容器端口    
+    docker run  -p 6379:6379 --name redis -d redis  
+    
+##  查看运行中的容器
+    docker ps
+    
+##  查看所有的容器
+    docker ps -a 
+      
+##  删除容器
+    docker rm container_id
+    
+##  启动/停止容器
+    docker start/stop container_id
+    
+##  强制停止容器，利用kill命令。
+    docker kill container_id
+     
+##  删除容器
+    docker stop container_id   
+
+##  查看容器日志 
+    参数说明：
+     -f : 跟踪日志输出
+    --since :显示某个开始时间的所有日志
+     -t : 显示时间戳
+    --tail :仅列出最新N条容器日志 
+    
+    docker logs container_id/container_name
+    
+##  进入容器 # docker exec -it 容器ID 参数
+    docker exec -it container_id/container_name redis-cli
+    docker exec -it container_id/container_name /bin/bash ##进入mysql容器 bash 交互模式
+    
+## docker启动mysql 做了端口映射
+   MYSQL_ROOT_PASSWORD
+   MYSQL_ALLOW_EMPTY_PASSWORD 
+   MYSQL_RANDOM_ROOT_PASSWORD 这个三个参数必须指定一个
+   
+   指定服务为utf8mb4
+   docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+  
+   
+   如果连接失败 提示： authentication plugin caching_sha2_password 
+   进入mysql容器
+   docker exec -it mysql /bin/bash
+   mysql -u root -p 回车之后输入密码
+   use mysql ;
+   select host,user from user;
+   
+   进行重置密码规则和密码
+   alter user 'root'@'%' IDENTIFIED BY 'password' PASSWORD EXPIRE NEVER;
+   alter user 'root'@'%' IDENTIFIED with mysql_native_password by '123456';
+   FLUSH PRIVILEGES;

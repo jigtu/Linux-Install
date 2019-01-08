@@ -1,0 +1,53 @@
+安装版本为5.5版本 使用rpm安装 则配置文件位置为 /usr/share/mysql下
+1、复制配置文件
+    cd /usr/share/mysql
+    cp my-huge.cnf /etc/my.cnf
+2、修改配置文件
+    cd /etc  
+    vim my.cnf
+
+3、主机修改配置文件my.cnf
+    在[mysqld]下添加
+    log-bin=mysql-bin  #是默认开启的 可不修改
+    read-only=0 #表示主机读写都可以
+    binlog-ignore-db=mysql #不需要复制的数据库
+    #binlog-do-db=fr_dev #设置只复制那个库 一般注销
+    server-id       = 1 #使用默认即可
+    
+4、从机复制、修改配置文件
+    cd /usr/share/mysql
+    cp my-huge.cnf /etc/my.cnf
+    
+    vim /etc/my.cnf 
+    server-id       = 2 #server-id 不可与主机master 一样
+    
+5、主机从机全部重启
+    service mysql restart
+     
+6、主机执行：
+    GRANT REPLICATION SLAVE ON *.* TO '用户名'@'从机IP地址' IDENTIFIED BY '密码';
+
+    flush privileges; 刷新权限
+
+    show master status; 查看状态 并记下 File Position 两个选项值
+    
+    例子：
+    +------------------+----------+--------------+------------------+
+    | File             | Position | Binlog_Do_DB | Binlog_Ignore_DB |
+    +------------------+----------+--------------+------------------+
+    | mysql-bin.000002 |      427 |              | mysql            |
+    +------------------+----------+--------------+------------------+
+
+
+7、从机执行：ip(主机master的IP) 用户名、密码为第六步所创建的用户名密码
+    CHANGE MASTER TO MASTER_HOST='192.168.56.101',MASTER_USER='ziqiang',
+    MASTER_PASSWORD='123456',MASTER_LOG_FILE='mysql-bin.000002',
+    MASTER_LOG_POS=427;
+    
+8、启动slave
+    start slave;
+    show slave status\G
+    
+    如果显示：则表示主从复制安装成功
+    Slave_IO_Running:Yes
+    Slave_SQL_Running:Yes

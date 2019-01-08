@@ -1,0 +1,16 @@
+cd /usr/local
+wget http://mirror.bit.edu.cn/apache/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz
+tar -zxvf apache-maven-3.5.3-bin.tar.gz
+cd apache-maven-3.5.3
+修改配置文件 配置本地仓库 以及镜像源
+
+vim /etc/profile.d/maven.sh
+添加如下内容 保存关闭
+
+export M2_HOME=/usr/local/apache-maven-3.5.3
+export PATH=$PATH:$M2_HOME/bin
+
+让其即时生效，source /etc/profile
+
+
+

@@ -1,0 +1,113 @@
+https://blog.csdn.net/magerguo/article/details/79637646
+
+一、创建运行ELK的用户和组
+    1、创建运行ELK的用户和组 
+        #groupadd elk
+        #useradd -g elk elk
+        #passwd elk
+
+    2、创建数据文件夹、日志文件夹:
+        mkdir -p /opt/elasticsearch-6.2.4/logs
+        mkdir -p /opt/elasticsearch-6.2.4/data
+        授权：
+        chown -R elk:elk /opt/elasticsearch-6.2.4
+
+    配置ElasticSearch
+
+    3、修改elasticsearch/config/elasticsearch.yml中：
+        #这里指定的是集群名称，需要修改为对应的，开启了自发现功能后，ES会按照此集群名称进行集群发现
+        cluster.name:anti
+        #数据目录
+        path.data:/opt/elasticsearch-6.2.4/data
+        # log目录
+        path.logs:/opt/elasticsearch-6.2.4/logs
+        # 节点名称
+        node.name: node-1
+        #修改一下ES的监听地址，这样别的机器也可以访问
+        network.host:0.0.0.0
+        #默认的端口号
+        http.port:9200
+        
+        启动：
+        进入elasticsearch的bin目录，使用./elasticsearch -d命令启动elasticsearch。
+
+    4、虚拟内存不够、切换到root用户修改配置sysctl.conf
+        vim /etc/sysctl.conf 
+        添加下面配置：
+        vm.max_map_count=655360
+        保存后执行：sysctl  –p
+        
+    5、提示创建的文件不够大、转到root下
+        vim /etc/security/limits.conf 
+        最后添加：
+        * soft nofile 65536
+        * hard nofile 131072
+        * soft nproc 2048
+        * hard nproc 4096
+        
+    6、设置elk用户参数
+        vim  /etc/security/limits.d/20-nproc.conf
+        添加配置
+        elk soft nproc 65536
+    
+二、安装插件 elasticsearch-head(安装完还是失败---)
+    1、安装git:   
+         1.1 yum install -y git
+    2、安装rpm：  
+         2.1 rpm -Uvh http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+         2.2 yum install -y npm
+    3、下载插件、并安装插件：
+         3.1 git clone git://github.com/mobz/elasticsearch-head.git
+         3.2 cd elasticsearch-head
+         3.3 npm install -g grunt   
+         3.4 npm install -g grunt-cli --registry=https://registry.npm.taobao.org --no-proxy   #使用的是国内镜像代理安装的
+         3.5 npm install 
+             3.5.1、如果失败(注意观看自己的版本) 
+                    npm install phantomjs-prebuilt@2.1.16 --ignore-scripts
+三、安装logstash
+    1、创建软连接
+         1.1 ln -s /opt/logstash-6.2.4/bin/logstash  /bin/logstash
+         
+    2、配置启动文件
+         2.1、cd /opt/logstash-6.2.4/bin 
+         2.2、mkdir config
+         2.3、vim log4j_to_es.conf 
+           2.3.1 添加内容
+              input {  
+                tcp {  #监听的端口
+                    port => 4560  
+                    }  
+              }  
+      
+              filter {  
+              }  
+      
+              output {  # 输出到 elasticsearch
+                    elasticsearch { 
+                          hosts => "127.0.0.1:9200"
+                          # 配置索引
+                          index => "logbt-%{+YYYY.MM.dd}"
+                          }  
+                    stdout {   codec => rubydebug   }  
+              }  
+    3、启动 cd /opt/logstash-6.2.4/bin
+            ./localhost -f config/log4j_to_es.conf
+
+四、安装Kibana
+1、解压缩 tar -zxvf kibana-6.2.4-linux-x86_64.tar.gz
+   重命名 mv kibana-6.2.4-linux-x86_64 kibana-6.2.4
+2、cd Kibana-6.2.4
+   cd config
+   vim Kibana.yml
+3、打开以下选项：
+   server.port
+   server.host: "0.0.0.0"
+   elasticsearch.url: "http://localhost:9200"
+   kibana.index: ".kibana"
+4、启动
+   cd /opt/Kibana-6.2.4/bin
+   ./Kibana
+   
+开启端口：
+开启： firewall-cmd --zone=public --add-port=80/tcp --permanent
+重启： firewall-cmd --reload    

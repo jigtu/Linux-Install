@@ -1,0 +1,78 @@
+https://blog.csdn.net/huwh_/article/details/79242625
+
+1、创建集群文件夹：
+    mkdir -p /usr/local/redis_cluster 
+    cd /usr/local/redis_cluster
+    创建节点文件夹
+    mkdir 7001 7002 7003 7004 7005 7006 
+2、下载安装包：    
+    wget http://download.redis.io/releases/redis-4.0.9.tar.gz
+    
+3、解压、编译
+    tar -zxvf redis-4.0.9.tar.gz
+    cd redis-4.0.9
+    make
+    
+4、复制配置文件   
+    cp redis /usr/local/redis_cluster/7001
+    2、修改配置文件
+    vim /usr/local/redis_cluster/7001/redis.conf
+    bind 192.168.56.102 #改为真实ip或者局域网IP
+    port 7001 #端口根据创建的文件夹来修改
+    daemonize yes #后台运行
+    pidfile /var/run/redis_7006.pid #可以改为 _端口
+    dir /usr/local/redis_cluster/7006/ # dir为 /usr/local/redis_cluster/端口/ 
+    appendonly yes
+    cluster-enabled yes # 开启集群
+    cluster-config-file nodes-7006.conf# 集群配置文件 以-端口命名（自动生成）
+    cluster-node-timeout 5000 #集群超时时间设置
+    
+    修改配置文件到需要的端口文件夹：
+      集群至少需要6个3注3从 所以配置文件分别从7001到7006
+      每个文件夹下的redis.conf需要修改为对应的配置
+      
+5、安装Ruby
+    5.1、yum -y install ruby rubygems
+    
+    因为gem install redis 会失败
+    
+    5.2、安装rvm
+        curl -L get.rvm.io | bash -s stable
+    5.2.1、会失败 执行里面的失败参数
+        gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+    5.2.1再次执行
+        curl -L get.rvm.io | bash -s stable
+        然后执行：
+        source /usr/local/rvm/scripts/rvm
+    
+    5.2.3、查看rvm库中已知的ruby版本
+            rvm list known
+        5.2.3.1、安装Ruby 2.4.0版本
+            rvm install  2.4.0
+        5.2.3.2、使用新版本
+            rvm use  2.4.0
+        5.2.3.3、移除旧版本
+            rvm remove 2.0.0
+        5.2.3.4、查看当前版本
+            ruby --version
+6、启动集群
+   6.1 、复制启动文件、以及连接文件
+    在redis-server 目录下
+    cp /redis-4.0.9/src/redis-server  /usr/local/redis_cluster
+    cp /redis-4.0.9/src/redis-cli    /usr/local/redis_cluster
+   
+   6.2、启动redis服务
+    ./redis-server 7001/redis.conf 
+    ./redis-server 7002/redis.conf 
+    ./redis-server 7003/redis.conf 
+    ./redis-server 7004/redis.conf 
+    ./redis-server 7005/redis.conf 
+    ./redis-server 7006/redis.conf 
+   6.3、安装redis
+    gem install redis
+     
+   6.4、创建集群
+    cd /redis-4.0.9/src/目录下
+    执行如下命令（ip为你的ip以及你自己设置的端口）
+    ./redis-trib.rb create --replicas 1 192.168.56.102:7001 192.168.56.102:7002 192.168.56.102:7003 192.168.56.102:7004 192.168.56.102:7005 192.168.56.102:7006
+   

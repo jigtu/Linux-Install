@@ -1,0 +1,49 @@
+rpm -qa | grep mysql
+rpm -qa | grep mariadb
+
+rpm -e --nodeps  mariadb 版本 或者 mysql版本
+或者
+yum remove mysql版本
+yum remove mariadb版本
+
+find / -name mysql
+
+删除关于mysql的所有
+rm -rf /** 等
+
+下载rpm源
+wget https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm 官网找
+
+
+rpm -ivh mysql80-community-release-el7-1.noarch.rpm
+
+清理更新
+
+yum clean all
+yum makecache
+
+查看mysql yum仓库中mysql版本，使用如下命令
+yum repolist all | grep mysql
+
+使用 yum-config-manager 命令修改相应的版本为启用状态最新版本为禁用状态
+yum-config-manager --disable mysql80-community
+yum-config-manager --enable mysql57-community
+
+或者可以编辑 mysql repo文件，
+cat /etc/yum.repos.d/mysql-community.repo 
+将相应版本下的enabled改成 1 即可；
+
+安装mysql 命令如下：
+yum install mysql-community-server
+
+查看安装密码
+cat /var/log/mysqld.log | grep password
+
+MyNewPass4!
+
+
+
+
+
+
+

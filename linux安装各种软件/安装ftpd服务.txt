@@ -1,0 +1,39 @@
+1、安装ftpd 服务
+    yum install vsftpd
+2、启动服务
+    service vsftpd start
+3、开机启动
+    systemctl enable vsftpd.service
+4、创建用户
+   useradd -d /home/u_ftp/ -g ftp -s /sbin/nologin uftp
+   
+5、防火墙开启ftp服务、开启21端口   
+   firewall-cmd --permanent --zone=public --add-service=ftp
+   firewall-cmd --zone=public --add-port=21/tcp --permanent
+   firewall-cmd --reload
+   
+6、创建ftp目录
+   mkdir /home/u_ftp
+7、用户赋予权限
+   chown -R uftp /home/u_ftp
+   chmod -R 755 /home/u_ftp
+   
+   getsebool -a | grep ftp
+   开启
+   getenforce
+   
+   setsebool ftpd_full_access 1
+   setsebool tftp_home_dir 1 
+   setenforce 0
+   
+   
+   
+8、修改vsftpd配置文件
+   cd /etc/vsftpd
+   vim vsftpd.conf
+   打开
+   listen=YES
+   关闭
+   listen_ipv6=YES
+    
+   

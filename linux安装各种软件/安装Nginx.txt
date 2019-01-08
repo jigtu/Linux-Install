@@ -1,0 +1,38 @@
+安装nginx
+
+第一种：
+https://blog.csdn.net/tangyaliang11/article/details/78675535
+
+1、安装依赖
+yum -y install gcc gcc-c++ autoconf automake make
+yum -y install zlib zlib-devel openssl openssl-devel pcre pcre-devel
+
+mkdir -p /usr/local/nginx
+cd /usr/local
+wget http://nginx.org/download/nginx-1.13.7.tar.gz
+tar -zxvf nginx-1.13.7.tar.gz
+cd  nginx-1.13.7
+
+配置到/usr/local/nginx 目录下
+./configure --prefix=/usr/local/nginx
+
+安装
+make && make install
+
+进入安装目录
+cd /usr/local/nginx/sbin 
+
+启动
+./nginx  
+
+第二种
+vim  /etc/yum.repos.d/nginx.repo 添加如下内容
+
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/centos/7/x86_64/
+gpgcheck=0
+enabled=1
+
+
+yum install nginx 安装

@@ -1,0 +1,26 @@
+rpm -qa | grep mariadb
+rpm -qa | grep mysql
+如果安装过 可以删除
+
+find / -name mysql
+删除查询出来的关于mysql的文件
+
+rpm -ivh mysql-xxx.rpm 等
+如果报错 
+请安装所需依赖 如下？
+yum -y install glibc.i686
+yum -y install libncurses.so.5
+yum -y install libaio.so.1
+yum -y install libz.so.1
+
+安装完后 重新安装rpm包
+
+# 启动mysql
+service mysql start 即可启动 默认无密码
+
+# 进入mysql 命令行
+mysql -uroot -p
+
+#设置密码
+ser password=password("root");
+

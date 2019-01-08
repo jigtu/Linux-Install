@@ -1,0 +1,42 @@
+1、创建用户组 sftp
+	groupadd sftp
+
+2、创建用户 jingtu
+	useradd -G sftp -s /sbin/nologin jingtu
+
+	-s 禁止用户ssh登录
+	-G 加入sftp用户组
+
+3、创建密码
+    passwd jingtu
+
+4、修改配置文件 sshd_config
+    vim /etc/ssh/sshd_config
+
+   将下面这行注释
+   # Subsystem  sftp  /usr/libexec/openssh/sftp-server
+
+  然后在末行加入:
+    Match Group sftp
+		X11Forwarding no
+		AllowTcpForwarding no
+		ChrootDirectory %h
+		ForceCommand internal-sftp
+
+说明:
+	Match Group sftp 匹配sftp用户组中的用户
+	ChrootDirectory %h 只能访问默认的用户目录(自己的目录), 例如 /home/jingtu
+
+5、设置目录权限
+	chown root:sftp /home/jingtu
+	chgrp -R sftp /home/jingtu
+	chmod -R 755 /home/jingtu
+
+# 设置用户可以上传的目录, 该用户下允许用户上传删除修改文件及文件夹
+	mkdir /home/jingtu/upload
+	chown -R jingtu:sftp /home/jingtu/upload
+	chmod -R 755 /home/jingtu/upload
+
+6、解决报错问题
+
+修改 /etc/selinux/config 中SELINUX 为 disabled

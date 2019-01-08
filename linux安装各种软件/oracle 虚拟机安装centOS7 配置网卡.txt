@@ -1,0 +1,25 @@
+先全局添加nat网卡
+         然后安装系统----
+如果安装完成后使用命令 
+ip addr 可以看到有ip 10.0.3.xx 或者10.2.0.10 等
+直接 
+vim  /etc/sysconfig/network-scripts/ifcfg-enp0s3 
+ONBOOT=yes
+vim  /etc/sysconfig/network-scripts/ifcfg-enp0s8
+ONBOOT=yes 
+service network restart 即可
+
+如果不存在
+需要添加网卡
+vim  /etc/sysconfig/network-scripts/ifcfg-enp0s3 主机only网卡 
+添加配置
+ONBOOT=yes
+
+vim  /etc/sysconfig/network-scripts/ifcfg-enp0s8 nat网卡配置
+ONBOOT=yes
+IPADDR=10.2.0.10
+GATEWAY=10.2.0.0
+NETMASK=255.255.255.0
+DNS1=10.2.0.0
+然后重启即可
+service network restart

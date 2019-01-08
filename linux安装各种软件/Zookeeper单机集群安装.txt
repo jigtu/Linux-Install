@@ -1,0 +1,34 @@
+yum install net-tools
+
+netstat -ntlp |grep 端口
+
+单机安装的话 直接解压缩
+进入zookeeper 解压缩目录 创建data文件夹
+
+进入conf目录下
+将zoo_sample.cfg 命名为zoo.cfg即可
+
+修改配置文件
+dataDir=/opt/zookeeper/data
+
+集群安装
+重命名名称之后
+vim zoo.cfg
+在配置文件最后加入等号后面的ip为zookeeper的集群节点ip
+
+server.1=192.168.56.101:2888:3888
+server.2=192.168.56.102:2888:3888
+server.3=192.168.56.103:2888:3888
+
+然后分别在server.1对应的主机上进入/opt/zookeeper/data 文件夹分别
+server.1执行 echo 1 > myid
+server.2执行 echo 2 > myid
+server.3执行 echo 3 > myid
+然后启动服务即可、、
+
+zkCli.sh -server 192.168.56.101:2181,192.168.56.102:2181,192.168.56.103:2181
+记得开放2181、2888、3888端口
+firewall-cmd --zone=public --add-port=2181/tcp --permanent
+firewall-cmd --zone=public --add-port=2888/tcp --permanent
+firewall-cmd --zone=public --add-port=3888/tcp --permanent
+firewall-cmd --reload
