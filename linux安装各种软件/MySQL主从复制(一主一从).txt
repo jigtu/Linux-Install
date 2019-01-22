@@ -25,7 +25,8 @@
     service mysql restart
      
 6、主机执行：
-    GRANT REPLICATION SLAVE ON *.* TO '用户名'@'从机IP地址' IDENTIFIED BY '密码';
+
+    GRANT REPLICATION SLAVE ON *.* TO 'root'@'192.160.0.5' IDENTIFIED BY 'Yjxm@114!';
 
     flush privileges; 刷新权限
 
@@ -40,9 +41,9 @@
 
 
 7、从机执行：ip(主机master的IP) 用户名、密码为第六步所创建的用户名密码
-    CHANGE MASTER TO MASTER_HOST='192.168.56.101',MASTER_USER='ziqiang',
-    MASTER_PASSWORD='123456',MASTER_LOG_FILE='mysql-bin.000002',
-    MASTER_LOG_POS=427;
+    CHANGE MASTER TO MASTER_HOST='192.160.0.4',MASTER_USER='root',
+    MASTER_PASSWORD='Yjxm@114!',MASTER_LOG_FILE='mysql-bin.000004',
+    MASTER_LOG_POS=1720;
     
 8、启动slave
     start slave;

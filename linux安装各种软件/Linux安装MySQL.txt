@@ -1,29 +1,48 @@
-https://blog.csdn.net/zhou920786312/article/details/77750604
+一个参考性博客： https://blog.csdn.net/zhou920786312/article/details/77750604
 
 1、下载 
     wget https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.22-linux-glibc2.12-x86_64.tar.gz
+	
 2、解压
     tar -zxvf  mysql-5.7.22-linux-glibc2.12-x86_64.tar.gz -C /usr/local
+	
 3、重命名
     cd /usr/local 
     mv mysql-5.7.22-linux-glibc2.12-x86_64 mysql
+	
 4、查看是否安装mysql
     rpm -qa | grep mysql
     安装就删除
     rpm -e --nodeps mysql的版本
+	
+	列如：
+	rpm -e --nodeps mysql-libs-5.1.73-5.el6_6.x86_64
+	
+	删除以前的安装
+	find / -name mysql 
+	查询出来文件夹 删除了 
+	
+	列如：
+	rm -rf /usr/share/resource-agents/ocft/configs/mysql
+    	
 5、检查mysql组和用户是否存在，如无创建
     cat /etc/group | grep mysql
     cat /etc/passwd |grep mysql
+	
 6、创建用户、用户组
     groupadd mysql
-    useradd -r -g mysql mysql //useradd -r参数表示mysql用户是系统用户，不可用于登录系统
+	// useradd -r参数表示mysql用户是系统用户，不可用于登录系统
+    useradd -r -g mysql mysql 
+	
 7、在mysql下添加data目录
     cd mysql
     mkdir data
+	
 8、更改mysql目录下所有的目录及文件夹所属组合用户
     cd /usr/local/
     chown -R mysql mysql/
     chgrp -R mysql mysql/
+	
 9、安装mysql
     cd mysql
     如果提示：error while loading shared libraries: libnuma.so.1: cannot open shared object file: No such file or directory
@@ -31,51 +50,62 @@ https://blog.csdn.net/zhou920786312/article/details/77750604
     2.yum -y install numactl.x86_64  
     然后执行：
         ./mysqld --initialize --user=mysql --basedir=/usr/local/mysql/ --datadir=/usr/local/mysql/data/ --lc_messages_dir=/usr/local/mysql/share --lc_messages=en_US    
-    保存一下初始密码：>4og=#eR)NkD
+    保存一下初始密码：QTEQf?cDm0Nu
+	
 10、配置my.cnf
     vim /etc/my.cnf
-    加入如下内容：
+    加入如下内容：centos7 版本加上# 
     #[mysql]  
     #basedir=/usr/local/mysql/  
-    #datadir=/usr/local/mysql/data/     
+    #datadir=/usr/local/mysql/data/ 
+      
+	centos6.5 配置
+	[mysqld]
+	basedir=/usr/local/mysql
+	datadir=/usr/local/mysql/data/
+	socket=/var/lib/mysql/mysql.sock
+	user=mysql
+	# Disabling symbolic-links is recommended to prevent assorted security risks
+	symbolic-links=0
+	lower_case_table_names=1
+	server-id=57
+	log-bin=mysql-bin
+	
+	# 默认不需要配置这一项
+	#sql-mode=STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+	##
+	[client]
+	default-character-set=utf8
+	socket=/var/lib/mysql/mysql.sock
+	##
+	[mysql]
+	default-character-set=utf8
+	socket=/var/lib/mysql/mysql.sock
+	#
+	[mysqld_safe]
+	log-error=/var/log/mysqld.log
+	pid-file=/var/run/mysqld/mysqld.pid
+
+	
+	
 11、配置开机启动 
     cd /usr/local/mysql/support-files/
     cp mysql.server /etc/init.d/mysql
     chmod +x /etc/init.d/mysql 
     chkconfig --add mysql 
+	
 12 启动服务
     service mysql start
+	
 13、登录
     cd /usr/local/mysql/bin
     ./mysql -u root -p 回车之后输入第九步保存的密码
+	
 14、设置密码
-    set password=password("root");
+    set password=password("Tec123@#$");
 15、设置远程登录权限
-    grant all privileges on *.* to'root' @'%' identified by 'root';
+    grant all privileges on *.* to'root' @'%' identified by 'Tec123@#$';
     FLUSH PRIVILEGES; #刷新权限    
     
-######################################################################################################################
 
-安装MySQL 8
-    
-安装MySQL 设置简单密码后无法进行授权认证 必须要改回安全认证密码
 
-set global validate_password_policy=0; 设置简单密码
-set global validate_password_length=4;  
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'new password';
-
-https://www.cnblogs.com/bigbrotherer/p/7241845.html
-
-在本机先使用root用户登录mysql： mysql -u root -p "youpassword" 进行授权操作：
-
-  GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION;
-
-安装mysql8 linux
-
-https://blog.csdn.net/managementandjava/article/details/80039650
-
-修改授权登录方式：（localhost改为任意ip）update user set host='%' where user='root' and host ='localhost';
-修改加密规则：ALTER USER 'root'@'%' IDENTIFIED BY 'password' PASSWORD EXPIRE NEVER; 
-刷新密码：ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'password'; 
-刷新权限：FLUSH PRIVILEGES;     
-    

@@ -1,0 +1,4 @@
+地址：123.207.236.103 
+用户名：root
+密码：Jingtu001
+mysql root root

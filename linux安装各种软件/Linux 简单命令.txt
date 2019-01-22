@@ -81,3 +81,12 @@
     yum list installed | grep "软件名称"
 ## 卸载软件 eg：
     yum remove -y docker-ce.x86_64 0:18.03.0.ce-1.el7.centos
+	
+	chown -R web assembly-v1/ # 将assembly-v1/ 权限赋值给web用户
+	
+	chown[选项]...[所有者][:[组]]文件...
+	
+添加可登录的用户	
+   useradd -m -d /home/web1 -s /bin/bash web1
+   passwd web1
+	
