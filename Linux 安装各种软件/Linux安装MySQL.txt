@@ -44,13 +44,19 @@
     chgrp -R mysql mysql/
 	
 9、安装mysql
-    cd mysql
-    如果提示：error while loading shared libraries: libnuma.so.1: cannot open shared object file: No such file or directory
-    1.如果已经安装了libnuma.so.1，先yum remove libnuma.so.1
-    2.yum -y install numactl.x86_64  
+   
+	
+	
+	cd mysql bin 目录
     然后执行：
         ./mysqld --initialize --user=mysql --basedir=/usr/local/mysql/ --datadir=/usr/local/mysql/data/ --lc_messages_dir=/usr/local/mysql/share --lc_messages=en_US    
-    保存一下初始密码：QTEQf?cDm0Nu
+   
+	 
+    如果提示：error while loading shared libraries: libnuma.so.1: cannot open shared object file: No such file or directory
+    1.如果已经安装了libnuma.so.1，先yum remove libnuma.so.1
+	2.yum -y install numactl.x86_64  
+
+	保存一下初始密码：QTEQf?cDm0Nu
 	
 10、配置my.cnf
     vim /etc/my.cnf
