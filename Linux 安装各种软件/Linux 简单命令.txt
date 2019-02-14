@@ -90,3 +90,4 @@
    useradd -m -d /home/web1 -s /bin/bash web1
    passwd web1
 	
+netstat -anp | grep 5560	
