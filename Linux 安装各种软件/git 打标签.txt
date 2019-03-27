@@ -3,3 +3,57 @@ git branch  查看分支
 git tag -a rg_web3.2 -m "rg_web3.2标签" 打标签命令
 git tag  查看标签 
 git push origin rg_web3.2 需要推送道服务器
+
+
+
+ Date selectPullTime();
+
+    /**
+     * 批量添加
+     *
+     * @param list 要添加的数据
+     * @return 影响的结果集
+     */
+    Integer batchSave(@Param("list") List<BlackList> list);
+
+    /**
+     * 批量更新
+     *
+     * @param list 要更新的数据
+     * @return 影响的结果集
+     */
+    Integer batchUpdate(@Param("list") List<BlackList> list);
+	
+	
+	
+	 <!--根据手机imei集合批量查询手机状态-->
+  <select id="selectByImeiList" parameterType="java.util.List" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from black_list
+    where imei in
+      <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+  </select>
+  <!--查询最新的拉取时间-->
+  <select id="selectPullTime" resultType="java.util.Date">
+    select add_time from black_list order by add_time desc limit 1
+  </select>
+
+  <!--批量插入-->
+  <insert id="batchSave" parameterType="java.util.List">
+    insert into black_list(imei,add_time,status) values
+    <foreach collection="list" item="black" separator=",">
+      (#{black.imei,jdbcType=VARCHAR}, #{black.add_time,jdbcType=TIMESTAMP},#{black.status,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+
+  <!--批量更新数据-->
+  <update id="batchUpdate"  parameterType="java.util.List">
+    <foreach collection="list" separator=";" item="black">
+      update black_list set
+      add_time = #{black.add_time,jdbcType=TIMESTAMP},
+      status = #{black.status,jdbcType=INTEGER}
+      where imei = #{black.imei,jdbcType=VARCHAR}
+    </foreach>
+  </update>

@@ -28,6 +28,10 @@
 	ChrootDirectory %h 只能访问默认的用户目录(自己的目录), 例如 /home/jingtu
 
 5、设置目录权限
+	chown root:sftp /home/u_ftp
+	chgrp -R sftp /home/u_ftp
+	chmod -R 755 /home/u_ftp
+	
 	chown root:sftp /home/jingtu
 	chgrp -R sftp /home/jingtu
 	chmod -R 755 /home/jingtu
@@ -36,6 +40,11 @@
 	mkdir /home/jingtu/upload
 	chown -R jingtu:sftp /home/jingtu/upload
 	chmod -R 755 /home/jingtu/upload
+	
+	chown -R u_ftp:sftp /home/u_ftp/imei
+	chown -R u_ftp:sftp /home/u_ftp/logfile
+	chmod -R 755 /home/u_ftp/imei
+	chmod -R 755 /home/u_ftp/logfile
 
 6、解决报错问题
 

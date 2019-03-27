@@ -27,15 +27,16 @@
     
 ##清除历史执行命令    
     history -c //清空历史执行命令
-
-##创建用户
-    useradd user 
-
-##修改密码
-    passwd user
+	
+添加可登录的用户	
+   useradd -m -d /home/web -s /bin/bash web
+   passwd web
 
 ##删除用户以及用户目录
     userdel -r -f user 
+	
+##删除用户组
+    goupdel u_sftp
 
 ##查看是否安装mysql
     rpm -qa | grep mysql
@@ -86,9 +87,8 @@
 	
 	chown[选项]...[所有者][:[组]]文件...
 	
-添加可登录的用户	
-   useradd -m -d /home/web1 -s /bin/bash web1
-   passwd web1
+
+
    
 查看端口是否被监听	
 netstat -anp | grep 5560	

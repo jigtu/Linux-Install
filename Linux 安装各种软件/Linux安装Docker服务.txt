@@ -146,7 +146,7 @@ eg:根据镜像后台启动镜像
      -t : 显示时间戳
     --tail :仅列出最新N条容器日志 
     
-    docker logs container_id/container_name
+    docker logs  container_id/container_name
     
 ##  进入容器 # docker exec -it 容器ID 参数
     docker exec -it container_id/container_name redis-cli
