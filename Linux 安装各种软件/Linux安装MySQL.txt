@@ -44,9 +44,8 @@
     chgrp -R mysql mysql/
 	
 9、安装mysql
+   scripts/mysql_install_db --user=mysql --datadir=/home/mysql/mysql-5.5.52/data
    
-	
-	
 	cd mysql bin 目录
     然后执行：
         ./mysqld --initialize --user=mysql --basedir=/usr/local/mysql/ --datadir=/usr/local/mysql/data/ --lc_messages_dir=/usr/local/mysql/share --lc_messages=en_US    

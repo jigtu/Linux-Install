@@ -1,3 +1,14 @@
+
+清空文件 四种方法
+1、  : > access.log // : 符号，它是 shell 的一个内置命令，等同于 true 命令
+  true > access.log // 使用 true 命令重定向清空文件
+2、cat /dev/null > access.log  使用 cat/cp/dd 实用工具及 /dev/null 设备来清空文件
+   cp /dev/null access.log
+3、truncate -s 0 access.log //使用 truncate 命令来清空文件内容
+4、echo "" > access.log  //使用 echo 命令清空文件
+   echo > access.lo
+5、> access.log    // 通过重定向到NULL清空文件
+ 
 ## 开启端口 centos 7 (前提是使用的firewall 而不是iptables)
 ##开启： 
     firewall-cmd --zone=public --add-port=80/tcp --permanent
@@ -12,8 +23,8 @@
     scp /home/space/music/1.mp3 root@192.168.247.207:/software
 
 ##跳转到指定服务器（ssh远程登录）
-    ssh root@192.168.247.207
-
+    ssh root@192.168.247.207 
+    ssh 192.168.247.207 
 ##导出历史命令到a.txt文件
     cat ~/.bash_history > a.txt
     
@@ -61,7 +72,7 @@
 
 ##文件或目录的inode(最前面的数字)
    ls -i 
-   eg: 9834008 assembly-v1.0.jar  9834004 config  9834006 logs  9834007 start.sh
+   9834008 assembly-v1.0.jar
 
 ##删除文件 可以解决gbk乱码删除不掉的困扰
     find -inum 9834008 -delete 删除文件
@@ -83,12 +94,10 @@
 ## 卸载软件 eg：
     yum remove -y docker-ce.x86_64 0:18.03.0.ce-1.el7.centos
 	
+## 文件权限	
 	chown -R web assembly-v1/ # 将assembly-v1/ 权限赋值给web用户
-	
 	chown[选项]...[所有者][:[组]]文件...
-	
-
-
+	chmod +x 等等
    
 查看端口是否被监听	
 netstat -anp | grep 5560	

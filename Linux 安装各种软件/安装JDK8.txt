@@ -17,4 +17,4 @@ rpm -e --nodeps  java-1.8.0-openjdk-1.8.0.161-2.b14.el7.x86_64
 rpm -e --nodeps  copy-jdk-configs-3.3-2.el7.noarch
 
 rpm -e --nodeps  java-1.7.0-openjdk-1.7.0.45-2.4.3.3.el6.x86_64
-rpm -e --nodeps java-1.6.0-openjdk-1.6.0.0-1.66.1.13.0.el6.x86_64
+rpm -e --nodeps  java-1.6.0-openjdk-1.6.0.0-1.66.1.13.0.el6.x86_64
