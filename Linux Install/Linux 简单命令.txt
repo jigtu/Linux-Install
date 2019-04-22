@@ -63,7 +63,15 @@
 	
 #删除用户组
     goupdel web
-
+	
+#修改用户组
+    将scf的用户组修改为web组
+    chgrp -R web /home/scf
+	
+#赋予750权限 
+    同一组的其他用户可访问scf用户的家目录
+    chmod 750 scf
+	
 #查看是否安装mysql
     rpm -qa | grep mysql
 
