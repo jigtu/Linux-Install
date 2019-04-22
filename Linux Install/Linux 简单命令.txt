@@ -1,103 +1,119 @@
+#vim 查看/设置文件编码
+	:set ff         //查看编码
+	:set ff =unix   //修改编码     
 
-清空文件 四种方法
-1、  : > access.log // : 符号，它是 shell 的一个内置命令，等同于 true 命令
-  true > access.log // 使用 true 命令重定向清空文件
-2、cat /dev/null > access.log  使用 cat/cp/dd 实用工具及 /dev/null 设备来清空文件
-   cp /dev/null access.log
-3、truncate -s 0 access.log //使用 truncate 命令来清空文件内容
-4、echo "" > access.log  //使用 echo 命令清空文件
-   echo > access.lo
-5、> access.log    // 通过重定向到NULL清空文件
+#清空文件的五种方法
+	1、  : > access.log            // : 符号，它是 shell 的一个内置命令，等同于 true 命令
+	  true > access.log            // 使用 true 命令重定向清空文件
+	2、cat /dev/null > access.log  // 使用 cat/cp/dd 实用工具及 /dev/null 设备来清空文件
+	    cp /dev/null access.log
+	3、truncate -s 0 access.log    //使用 truncate 命令来清空文件内容
+	4、echo "" > access.log        //使用 echo 命令清空文件
+	   echo    > access.lo
+	5、 > access.log               // 通过重定向到NULL清空文件
  
-## 开启端口 centos 7 (前提是使用的firewall 而不是iptables)
-##开启： 
-    firewall-cmd --zone=public --add-port=80/tcp --permanent
-##重启： 
-    firewall-cmd --reload 
-##查看： 
-    firewall-cmd --zone=public --query-port=80/tcp
-##删除： 
-    firewall-cmd --zone=public --remove-port=80/tcp --permanent
+#开启端口centos7(前提是使用的firewall 而不是iptables)
+	#开启：firewall-cmd --zone=public --add-port=80/tcp --permanent
+	#重启：firewall-cmd --reload 
+	#查看：firewall-cmd --zone=public --query-port=80/tcp
+	#删除：firewall-cmd --zone=public --remove-port=80/tcp --permanent
     
 ##复制到指定的服务器的位置 
-    scp /home/space/music/1.mp3 root@192.168.247.207:/software
-
-##跳转到指定服务器（ssh远程登录）
+    1、复制文件
+	scp local_file remote_username@remote_ip:remote_folder
+	scp local_file remote_username@remote_ip:remote_file
+	scp local_file remote_ip:remote_folder
+	scp local_file remote_ip:remote_file
+    
+    eg:scp /home/1.mp3 root@192.168.247.207:/software
+	
+	2、复制目录
+	scp -r local_folder remote_username@remote_ip:remote_folder
+    scp -r local_folder remote_ip:remote_folder
+	
+	
+	3、从远处复制到本地
+	scp -r root@192.168.120.204:/opt/soft/mongodb /opt/soft/
+	eg: scp -r root@192.168.247.202:/opt/rh /opt/
+	
+#跳转到指定服务器（ssh远程登录）
     ssh root@192.168.247.207 
     ssh 192.168.247.207 
-##导出历史命令到a.txt文件
+	
+#导出历史命令到a.txt文件
     cat ~/.bash_history > a.txt
     
-##清除登陆系统成功的记录
+#清除登陆系统成功的记录
     echo > /var/log/wtmp
     last //此时即查不到用户登录信息
 
-##清除登陆系统失败的记录
+#清除登陆系统失败的记录
     echo > /var/log/btmp
     lastb //查不到登陆失败信息
     
-##清除历史执行命令    
-    history -c //清空历史执行命令
+#清除历史执行命令    
+    history -c     //清空历史执行命令
 	
 添加可登录的用户	
    useradd -m -d /home/web -s /bin/bash web
    passwd web
 
-##删除用户以及用户目录
+#删除用户以及用户目录
     userdel -r -f user 
 	
-##删除用户组
-    goupdel u_sftp
+#删除用户组
+    goupdel web
 
-##查看是否安装mysql
+#查看是否安装mysql
     rpm -qa | grep mysql
 
-##卸载软件-强制
+#卸载软件-强制
     rpm -e --nodeps xx
 
-##find 命令 
+#find 命令 
     find / -name mysql
 
-##which 用来查找系统PATH目录下的可执行文件
+#which 用来查找系统PATH目录下的可执行文件
     which mysql
 
-##可以用来查找二进制（命令）、源文件、man文件。这条命令可以是通过文件索引数据库而非PATH来查找
+#可以用来查找二进制（命令）、源文件、man文件。这条命令可以是通过文件索引数据库而非PATH来查找
     whereis redis
 
-##yum 安装软件
+#yum 安装软件
     yum install 软件名 -y
 
-## yum 卸载软件
-    yum remove 
+#yum 卸载软件
+    yum remove 软件名
 
-##文件或目录的inode(最前面的数字)
+#文件或目录的inode(最前面的数字)
    ls -i 
    9834008 assembly-v1.0.jar
 
-##删除文件 可以解决gbk乱码删除不掉的困扰
+#删除文件 可以解决gbk乱码删除不掉的困扰
     find -inum 9834008 -delete 删除文件
 
-##删除非空目录
+#删除非空目录
     find -inum 9834008 -exec rm -rf {} \;
 
-##curl 命令发送post请求 上传文件
+#curl 命令发送post请求 上传文件
     curl https://wap.cintel.com.cn/anti_theft/api/appeal/appealPeopleUpload.do -F "file=@1.mp4" -F "openid=123456789"
 
-##检查linux内核版本
+#检查linux内核版本
     uname -r
     
-## 更新
+#更新
     yum update -y 
 
-## 查看安装过的软件
+#查看安装过的软件
     yum list installed | grep "软件名称"
-## 卸载软件 eg：
+	
+#卸载软件 eg：
     yum remove -y docker-ce.x86_64 0:18.03.0.ce-1.el7.centos
 	
-## 文件权限	
+#文件权限	
 	chown -R web assembly-v1/ # 将assembly-v1/ 权限赋值给web用户
 	chown[选项]...[所有者][:[组]]文件...
 	chmod +x 等等
    
-查看端口是否被监听	
+#查看端口是否被监听	
 netstat -anp | grep 5560	
