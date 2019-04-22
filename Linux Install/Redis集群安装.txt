@@ -28,7 +28,7 @@ https://blog.csdn.net/huwh_/article/details/79242625
     cluster-node-timeout 5000 #集群超时时间设置
     
     修改配置文件到需要的端口文件夹：
-      集群至少需要6个3注3从 所以配置文件分别从7001到7006
+      集群至少需要6个3主3从 所以配置文件分别从7001到7006
       每个文件夹下的redis.conf需要修改为对应的配置
       
 5、安装Ruby
@@ -58,8 +58,8 @@ https://blog.csdn.net/huwh_/article/details/79242625
 6、启动集群
    6.1 、复制启动文件、以及连接文件
     在redis-server 目录下
-    cp /redis-4.0.9/src/redis-server  /usr/local/redis_cluster
-    cp /redis-4.0.9/src/redis-cli    /usr/local/redis_cluster
+    cp /redis-4.0.9/src/redis-server  /usr/local/redis_server
+    cp /redis-4.0.9/src/redis-cli    /usr/local/redis-cli
    
    6.2、启动redis服务
     ./redis-server 7001/redis.conf 
