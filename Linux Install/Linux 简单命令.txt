@@ -1,3 +1,15 @@
+#date 设置时间
+  hwclock --show      查看bios时间 
+  hwclock -r     
+  
+  date -s "10:04:30"  设置系统时间
+  hwclock --systohc   系统时间同步到bios
+  hwclock -w
+  
+  hwclock --hctosys   bios时间同步到系统
+  hwclock -s
+ 
+  
 #vim命令
   : 行数    //跳转到指定行
   shift + g //跳转到行尾
