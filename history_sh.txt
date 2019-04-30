@@ -1,0 +1,3269 @@
+ 
+#1545793128
+ll
+#1545793134
+cd /usr/java
+#1545793136
+l
+#1545793139
+cd /usr/
+#1545793140
+ll
+#1545793144
+mkdir java
+#1545793145
+ll
+#1545793186
+yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+#1545793206
+cd /opt/
+#1545793207
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+#1545793209
+yum makecache
+#1545793363
+yum --enablerepo=remi install redis
+#1545793382
+service redis start
+#1545793383
+    chkconfig redis on
+#1545793389
+service redis start
+#1545793392
+    chkconfig redis on
+#1545793402
+cd /usr/java/
+#1545793430
+ls
+#1545793437
+groupadd sftp
+#1545793450
+useradd -G sftp -s /sbin/nologin sftp
+#1545793482
+passwd sftp
+#1545793498
+cd /home/
+#1545793498
+ll
+#1545793513
+useradd -G sftp -s /sbin/nologin jingtu
+#1545793518
+passwd jingtu
+#1545793528
+ls
+#1545793531
+cd jingtu/
+#1545793532
+ll
+#1545793541
+vim /etc/ssh/sshd_config
+#1545793646
+chown root:sftp /home/jingtu
+#1545793646
+chgrp -R sftp /home/jingtu
+#1545793647
+chmod -R 755 /home/jingtu
+#1545793667
+mkdir /home/jingtu/upload
+#1545793667
+chown -R jingtu:sftp /home/jingtu/upload
+#1545793668
+chmod -R 755 /home/jingtu/upload
+#1545793670
+ls
+#1545793682
+ll
+#1545793684
+cd upload/
+#1545793685
+ll
+#1545793701
+cd /usr/java/
+#1545793702
+ll
+#1545793709
+tar -zxvf jdk-8u191-linux-x64.tar.gz 
+#1545793715
+ll
+#1545793721
+rm -rf jdk-8u191-linux-x64.tar.gz 
+#1545793722
+ll
+#1545793724
+cd jdk1.8.0_191/
+#1545793725
+ll
+#1545793727
+cd ../
+#1545793729
+pwd
+#1545793731
+cd jdk1.8.0_191/
+#1545793733
+ll
+#1545793734
+ped
+#1545793737
+pwd
+#1545793755
+vim /etc/profile.d/java.sh
+#1545793787
+source /etc/profile
+#1545793793
+java -version
+#1545793797
+ls
+#1545793799
+cd /opt/
+#1545793799
+ll
+#1545793803
+rm -rf rh/
+#1545793804
+ll
+#1545793808
+cd ~
+#1545793809
+ll
+#1545793813
+cd /home/
+#1545794198
+service sshd restart
+#1545794347
+vim /etc/ssh/sshd_config
+#1545794411
+history
+#1545794418
+service sshd restart
+#1545794495
+cd jingtu/
+#1545794496
+ll
+#1545794498
+cd upload/
+#1545794499
+ll
+#1545794528
+cd /opt/
+#1545794529
+ll
+#1545794536
+touch 1.txt
+#1545794638
+cd /home/jingtu/upload/
+#1545794639
+ll
+#1545794662
+rm -rf 2`
+;
+
+;
+#1545794672
+rm -rf 2/
+#1545794673
+ll
+#1545794765
+ps -ef|grep redis
+#1545794772
+redis-cls
+#1545794774
+redis-cli
+#1545794509
+sftp jingtu@127.0.0.1
+#1545795516
+ls
+#1545795518
+cd ../
+#1545795519
+ll
+#1545795869
+yum install lftp
+#1545795887
+ls
+#1545795889
+ll
+#1545795927
+vim  /etc/yum.repos.d/nginx.repo
+#1545795948
+yum install nginx
+#1545795972
+whereis nginx
+#1545795975
+cd /etc/
+#1545795979
+cd nginx/
+#1545795979
+ll
+#1545795985
+cd conf.d/
+#1545795986
+ll
+#1545796123
+ls
+#1545796126
+cd ../
+#1545796127
+ll
+#1545796138
+yum install unzip -y
+#1545796156
+unzip www.wxjingtu.top.zip  -d jingtu
+#1545796158
+ll
+#1545796197
+vim nginx.conf 
+#1545796302
+cd /etc/n
+#1545796308
+cd /etc/nginx/
+#1545796309
+ll
+#1545796311
+cd jingtu/
+#1545796311
+ll
+#1545796315
+cd Nginx/
+#1545796316
+ll
+#1545796319
+pwd
+#1545796216
+vim conf.d/default.conf 
+#1545796371
+nginx -t
+#1545796437
+vim conf.d/default.conf 
+#1545796539
+nginx -t
+#1545796545
+vim conf.d/default.conf 
+#1545796646
+nginx -t
+#1545796656
+vim conf.d/default.conf 
+#1545796672
+nginx -t
+#1545796678
+nginx -t
+#1545796680
+vim conf.d/default.conf 
+#1545796760
+nginx -t
+#1545796768
+vim nginx.conf 
+#1545796806
+nginx -t
+#1545796817
+nginx -t
+#1545796819
+vim nginx.conf 
+#1545796830
+nginx -t
+#1545796836
+vim conf.d/default.conf 
+#1545796877
+nginx -t
+#1545796882
+nginx
+#1545880770
+cd /opt/
+#1545880771
+ll
+#1545880779
+touch test.sh
+#1545880842
+cd /home/jingtu/upload/
+#1545880843
+ll
+#1545880845
+ll
+#1545880783
+vim test.sh 
+#1545881055
+ll
+#1545881063
+vim test.sh 
+#1545881194
+crontab -e
+#1545881248
+chmod +x test.sh 
+#1545881258
+mv test.sh upload.sh
+#1545881260
+ll
+#1545881271
+chmod +s upload.sh 
+#1545881272
+ls
+#1545881273
+ll
+#1545881282
+ls
+#1545881283
+ls
+#1545881287
+vim upload
+#1545881296
+vim upload_sftp.log 
+#1545881304
+cd /home/jingtu/upload/
+#1545881305
+ll
+#1545881798
+ll
+#1545881804
+cd /opt/
+#1545881806
+vim upload
+#1545881812
+vim upload.sh 
+#1545881846
+ls
+#1545881849
+ll
+#1545881854
+date
+#1545881857
+date
+#1545881860
+date
+#1545881861
+date
+#1545881862
+date
+#1545881869
+more upload_sftp.log 
+#1545881877
+vim upload.sh 
+#1545881983
+more upload_sftp.log 
+#1545881988
+more upload_sftp.log 
+#1545881989
+more upload_sftp.log 
+#1545881990
+more upload_sftp.log 
+#1545881990
+more upload_sftp.log 
+#1545881991
+more upload_sftp.log 
+#1545881993
+date
+#1545881994
+date
+#1545881996
+date
+#1545881997
+date
+#1545882001
+date
+#1545882009
+more upload_sftp.log 
+#1545882164
+vim upload.sh 
+#1545882213
+./upload.sh 
+#1545882235
+cd /home/jingtu/upload/
+#1545882238
+mkdir
+#1545882244
+mkdir other
+#1545882245
+ll
+#1545882248
+./upload.sh 
+#1545882254
+./upload.sh 
+#1545882264
+rm -rf other/
+#1545882288
+./upload.sh 
+#1545882303
+vim upload.sh 
+#1545882337
+./upload.sh 
+#1545882422
+vim upload.sh 
+#1545882438
+./upload.sh 
+#1545882441
+ls
+#1545882469
+ls
+#1545882475
+vim upload_sftp.log 
+#1545882271
+sftp jingtu@127.0.0.1
+#1545882499
+ll
+#1545882505
+ll
+#1545882506
+ls
+#1545882508
+ll
+#1545882511
+cd ../
+#1545882512
+ll
+#1545882524
+more upload_sftp.log 
+#1545882532
+more upload_sftp.log 
+#1545882537
+date
+#1545882539
+more upload_sftp.log 
+#1545882554
+more upload_sftp.log 
+#1545882562
+date
+#1545882566
+ls
+#1545882570
+cd upload/
+#1545882571
+ll
+#1545882579
+rm -rf 1.`
+;
+#1545882586
+rm -rf 1.txt 
+#1545882587
+ll
+#1545882590
+date
+#1545882594
+more upload_sftp.log 
+#1545882601
+date
+#1545882604
+more upload_sftp.log 
+#1545882610
+ls
+#1545882682
+vim upload.sh 
+#1545882756
+vim upload.sh 
+#1545882882
+vim upload.sh 
+#1545882896
+./upload.sh 
+#1545882909
+rm -rf 1.`
+#1545882914
+rm -rf 1.txt 
+#1545893473
+cd /opt/
+#1545893488
+mkdir test
+#1545893491
+cd test/
+#1545893548
+cd /opt/
+#1545893549
+ll
+#1545893554
+vim upload.sh 
+#1545893617
+rm -rf upload_sftp.log 
+#1545893622
+./upload.sh 
+#1545893635
+ls
+#1545893642
+vim upload.sh 
+#1545893689
+cd test/
+#1545893690
+ll
+#1545893708
+cd /home/jingtu/upload/
+#1545893708
+ll
+#1545893719
+rm -rf 20181227145*
+#1545893721
+ll
+#1545893727
+rm -rf 1.txt 
+#1545893728
+ll
+#1545893736
+jps
+#1545893747
+crontab -l
+#1545893757
+htop
+#1545893766
+yum install htop -y
+#1545893781
+htop
+#1545893795
+date
+#1545893804
+ls
+#1545893806
+ll
+#1545893810
+ll
+#1545893835
+rm -rf 201812271452*
+#1545893836
+LL
+#1545893838
+ll
+#1545893840
+ls
+#1545893885
+rm -rf 201812271453* 201812271354* 201812271455* 201812271456*
+#1545893886
+ls
+#1545893896
+ls
+#1545893905
+ls
+#1545897821
+ls
+#1545897823
+ll
+#1545897827
+ls
+#1545897834
+ll
+#1545897857
+rm -rf 201812271*
+#1545897858
+ll
+#1545897862
+ll
+#1545897865
+vim upload_sftp.log 
+#1547303895
+ll
+#1547303901
+rm -rf upload_sftp.log 
+#1547303901
+ll
+#1547303904
+cd /home/
+#1547303904
+ll
+#1547303906
+cd jingtu/
+#1547303909
+ll
+#1547303911
+cd /opt/
+#1547303912
+ll
+#1547303918
+rm -rf upload_sftp.log 
+#1547303919
+ll
+#1547303925
+rm -rf 1.txt 
+#1547303926
+ll
+#1547303927
+cd test/
+#1547303928
+ll
+#1547303933
+cd ../ 
+#1547303935
+rm -rf test/
+#1547303936
+;;
+#1547303937
+ll
+#1547303940
+ll
+#1547304001
+nginx
+#1547304013
+redic-cls
+#1547304017
+redic-cli
+#1547304022
+redis-cli
+#1547304099
+rpm -qa | grep mysql
+#1547304120
+yum -y install numactl.x86_64
+#1547304141
+yum remove libnuma.so.1
+#1547304299
+whereis nginx
+#1547304305
+cd /etc/nginx/
+#1547304306
+ll
+#1547304312
+vim conf.d/default.conf 
+#1547304723
+nginx -t
+#1547304728
+vim conf.d/default.conf 
+#1547304758
+nginx -t
+#1547304892
+cd /
+#1547304893
+;;
+#1547304895
+ll
+#1547304908
+cd root/
+#1547304909
+ll
+#1547304916
+cd ../
+#1547304917
+ll
+#1547304920
+cd /home/
+#1547304921
+ll
+#1547305064
+mkdir resource
+#1547305065
+ll
+#1547305067
+cd resource/
+#1547305091
+unzip image.zip image
+#1547305098
+unzip -d  image.zip image
+#1547305113
+unzip image.zip 
+#1547305116
+ll
+#1547305135
+rm -rf __MACOSX/
+#1547305136
+ll
+#1547305138
+cd image/
+#1547305140
+ll
+#1547305191
+cd ../
+#1547305193
+pwd
+#1547305226
+cd ../
+#1547305237
+mv resource apps
+#1547305238
+ll
+#1547304761
+vim conf.d/default.conf 
+#1547305251
+nginx -t
+#1547305256
+nginx -t
+#1547305264
+nginx -s
+#1547305276
+nginx --help
+#1547305280
+nginx -help
+#1547305286
+nginx -h
+#1547305309
+nginx -s reload
+#1547305314
+cd apps/
+#1547305317
+cd image/
+#1547305318
+ll
+#1547305539
+vim conf.d/default.conf 
+#1547305816
+nginx -s reload
+#1547305820
+ngincx -t
+#1547305826
+nginx  -t
+#1547305895
+vim conf.d/default.conf 
+#1547305930
+nginx -t 
+#1547305935
+nginx -s reload
+#1547306134
+vim conf.d/default.conf 
+#1547306298
+nginx -s reload
+#1547306302
+nginx -t
+#1547303966
+wget https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.22-linux-glibc2.12-x86_64.tar.gz
+#1547307567
+cd /home/jingtu/
+#1547307568
+ll
+#1547307575
+cd upload/
+#1547307576
+ll
+#1547307760
+pwd
+#1547308122
+ll
+#1547308125
+cd 123`
+#1547308129
+cd 123/
+#1547308130
+ll
+#1547308133
+vim 1`
+#1547308137
+vim 1.txt 
+#1547308141
+cd ../
+#1547308145
+rm -rf 123`
+#1547308148
+rm -rf 123
+#1547308149
+ll
+#1547308155
+mkdir appeal
+#1547308237
+ll
+#1547308367
+tar -zxvf  mysql-5.7.22-linux-glibc2.12-x86_64.tar.gz -C /usr/local
+#1547308409
+cd /usr/local 
+#1547308410
+    mv mysql-5.7.22-linux-glibc2.12-x86_64 mysql
+#1547308412
+ll
+#1547308424
+cat /etc/group | grep mysql
+#1547308425
+    cat /etc/passwd |grep mysql
+#1547308436
+groupadd mysql
+#1547308438
+    useradd -r -g mysql mysql //useradd -r
+#1547308451
+useradd -r -g mysql mysql
+#1547308462
+cd mysql
+#1547308462
+    mkdir data
+#1547308470
+cd /usr/local/
+#1547308470
+    chown -R mysql mysql/
+#1547308471
+    chgrp -R mysql mysql/
+#1547308491
+cd mysql
+#1547308504
+./mysqld --initialize --user=mysql --basedir=/usr/local/mysql/ --datadir=/usr/local/mysql/data/ --lc_messages_dir=/usr/local/mysql/share --lc_messages=en_US
+#1547308510
+ll
+#1547308516
+cd bin/
+#1547308517
+./mysqld --initialize --user=mysql --basedir=/usr/local/mysql/ --datadir=/usr/local/mysql/data/ --lc_messages_dir=/usr/local/mysql/share --lc_messages=en_US
+#1547308541
+vim /etc/my.cnf
+#1547308622
+cd /usr/local/mysql/support-files/
+#1547308622
+    cp mysql.server /etc/init.d/mysql
+#1547308622
+    chmod +x /etc/init.d/mysql 
+#1547308622
+    chkconfig --add mysql 
+#1547308631
+service mysql start
+#1547308649
+service mysql start
+#1547308698
+cd /usr/local/
+#1547308698
+    chown -R mysql mysql/
+#1547308698
+    chgrp -R mysql mysql/
+#1547308703
+service mysql start
+#1547308743
+mkdir /var/log/mariadb 
+#1547308743
+touch /var/log/mariadb/mariadb.log 
+#1547308743
+chown -R mysql:mysql  /var/log/mariadb/
+#1547308747
+service mysql start
+#1547308772
+vim /etc/my.cnf
+#1547308837
+service mysql start
+#1547308873
+cd /var/log/
+#1547308874
+ll
+#1547308880
+rm -rf mariadb/
+#1547308881
+ll
+#1547308888
+cd /opt/
+#1547308889
+ll
+#1547308912
+ps -ef|grep mysql
+#1547308919
+service start mysql
+#1547308934
+service  mysql start
+#1547308957
+vim /etc/my.cnf
+#1547309029
+service  mysql start
+#1547309042
+vim /etc/my.cnf
+#1547309059
+service  mysql start
+#1547309088
+mkdir /var/lib/musql
+#1547309090
+service  mysql start
+#1547309107
+vim /etc/my.cnf
+#1547309143
+service  mysql start
+#1547309147
+service  mysql start
+#1547309159
+systemctl mysql start
+#1547309186
+cd cd /usr/local/mysql/
+#1547309187
+ll
+#1547309193
+cd /usr/local/mysql/
+#1547309194
+ll
+#1547309199
+cd bin/
+#1547309199
+ll
+#1547309201
+cd ../
+#1547309204
+cd support-files/
+#1547309205
+ll
+#1547309209
+cd ../
+#1547309210
+ll
+#1547309214
+cd share/
+#1547309215
+ll
+#1547309221
+cd ../
+#1547309222
+ll
+#1547309225
+cd /etc/my.cnf.d/
+#1547309233
+ll
+#1547309239
+vim mysql-clients.cnf 
+#1547309249
+vim /etc/my.cnf
+#1547309280
+service  mysql start
+#1547309302
+cd cd /usr/local/mysql/bin
+#1547309306
+cd /usr/local/mysql/bin
+#1547309315
+./mysql -u root -p
+#1547309423
+./mysql -u root -p
+#1547309432
+ip addr
+#1547310474
+HTOP
+#1547310478
+htop
+#1547311574
+cd /opt/
+#1547311601
+ll
+#1547311605
+rm -rf mysql-5.7.22-linux-glibc2.12-x86_64.tar.gz 
+#1547311606
+ll
+#1547312113
+ll
+#1547312131
+unzip apps-4.0-bin.zip 
+#1547312135
+ll
+#1547312137
+cd apps-4.0/
+#1547312138
+ll
+#1547312147
+chmod +x start.sh 
+#1547312153
+./start.sh start
+#1547312226
+cd /etc/nginx/
+#1547312226
+ll
+#1547312231
+vim conf.d/default.conf 
+#1547312347
+nginx -t
+#1547312352
+nginx -s reload
+#1547312159
+tail -100f logs/apps-4.0.log 
+#1547312359
+./start.sh stop
+#1547312363
+cd config/
+#1547312364
+ll
+#1547312367
+vim application.yml 
+#1547312387
+vim conf.d/default.conf 
+#1547312397
+nginx -s reload
+#1547312399
+nginx -t
+#1547312404
+cd ../
+#1547312409
+./start.sh start
+#1547313102
+htop
+#1547312417
+tail -100f logs/apps-4.0.log 
+#1547347514
+whereis ndinx 
+#1547347520
+whereis nginx 
+#1547347546
+cd /etc/nginx/
+#1547347579
+vim conf.d/default.conf 
+#1547347746
+cd /opt/
+#1547347751
+pwd
+#1547347756
+ls
+#1547347785
+cd apps-4.0/
+#1547347786
+ll
+#1547377946
+cd /opt/
+#1547377946
+ll
+#1547378045
+ll
+#1547378052
+unzip token-1.0-bin.zip 
+#1547378054
+cd token-1.0/
+#1547378055
+ll
+#1547378061
+chmod +x start.sh 
+#1547378063
+ll
+#1547378071
+./start.sh start
+#1547378082
+cd logs/
+#1547378083
+ll
+#1547378166
+curl http://localhost:8080/token/jingtu/mimi_token?code=111111
+#1547378187
+curl http://localhost:8080/token/jingtu/mini_token?code=111111
+#1547378654
+ll
+#1547378658
+cd /opt/
+#1547378658
+l;
+#1547378660
+ll
+#1547378662
+cd apps-4.0/
+#1547378662
+ll
+#1547378669
+vim config/application.yml 
+#1547379218
+cd /etc/nginx/
+#1547379222
+vim conf.d/default.conf 
+#1547379261
+nginx -t
+#1547379264
+nginx -s reload
+#1547378089
+tail -100f token-1.0.log 
+#1547379357
+cd ../
+#1547379361
+./start.sh stop
+#1547379372
+jps
+#1547379380
+kill -9 5268
+#1547379381
+ll
+#1547379385
+jps
+#1547379452
+./start.sh start
+#1547379460
+tail -100f logs/token-1.0.log 
+#1547379622
+./start.sh stop
+#1547379626
+jps
+#1547379633
+kill -9 7555
+#1547379636
+jps
+#1547379705
+./start.sh start
+#1547380046
+cd /opt/
+#1547380049
+cd token-1.0/
+#1547380053
+./start.sh start
+#1547380060
+./start.sh stop
+#1547380070
+jps
+#1547380077
+kill -9 8012
+#1547380081
+jps
+#1547380089
+./start.sh start
+#1547380286
+./start.sh stop
+#1547380381
+./start.sh start
+#1547380574
+cd /opt/
+#1547380576
+cd apps-4.0/
+#1547380588
+tail -100f logs/apps-4.0.log 
+#1547381530
+htop
+#1547382825
+cd ../apps-4.0/
+#1547382826
+cd config/
+#1547382827
+ll
+#1547382830
+vim application.yml 
+#1547382836
+vim application-prod.yml 
+#1547382940
+vim /etc/my.cnf
+#1547382979
+vim /etc/my.cnf
+#1547382991
+service stop mysql
+#1547382999
+service mysql stop
+#1547383007
+service mysql start
+#1547383728
+cd /opt/
+#1547383730
+cd apps-4.0/
+#1547383940
+cd /opt/
+#1547383941
+cd apps-4.0/
+#1547383942
+ll
+#1547383978
+jps
+#1547383990
+kill -9 14995
+#1547383992
+ls
+#1547383995
+jps
+#1547384003
+./start.sh start
+#1547384163
+./start.sh stop
+#1547384175
+./start.sh start
+#1547384349
+./start.sh stop
+#1547384399
+./start.sh start
+#1547384594
+./start.sh stop
+#1547384603
+./start.sh start
+#1547380929
+tail -100f logs/apps-4.0.log 
+#1547379713
+tail -100f logs/token-1.0.log 
+#1547383736
+tail -100f logs/apps-4.0.log 
+#1547784377
+ls
+#1547784378
+ls
+#1547784379
+jps
+#1547784384
+cd /opt/
+#1547784385
+ll
+#1547784387
+cd apps-4.0/
+#1547784393
+tail -100f logs/apps-4.0.log 
+#1547784428
+cd ../
+#1547784428
+ll
+#1547784432
+cd token-1.0/
+#1547784433
+ll
+#1547784438
+tail -100f logs/token.2019-01-1
+#1547784443
+cd logs/
+#1547784444
+ll
+#1547784464
+tail -1000f token-1.0.log 
+#1547784482
+cd ../
+#1547784483
+ll
+#1547784485
+cd config/
+#1547784486
+ll
+#1547784489
+vim application.yml 
+#1547784496
+vim application-prod.yml 
+#1547784520
+cd ../
+#1547784523
+./start.sh stop
+#1547784528
+./start.sh start.sh 
+#1547784532
+./start.sh start
+#1547784543
+cd /home/
+#1547784543
+ll
+#1547973738
+useradd -m -d /home/web1 -s /bin/bash web
+#1547973746
+passwd web
+#1547973760
+su - web
+#1547973844
+cd /home/
+#1547973845
+ll
+#1547973874
+userdel -r -f web
+#1547973876
+ls
+#1547973877
+ll
+#1547973888
+useradd -m -d /home/web1 -s /bin/bash web
+#1547973890
+ll
+#1547973893
+userdel -r -f web
+#1547973898
+useradd -m -d /home/web -s /bin/bash web
+#1547973902
+passwd web
+#1547973909
+ls
+#1548128002
+df -h
+#1550126398
+htop
+#1550126411
+top
+#1550126416
+jps
+#1550126421
+ll
+#1550126423
+cd /opt/
+#1550126424
+ll
+#1550126427
+cd apps-4.0/
+#1550126428
+ll
+#1550126430
+cd logs/
+#1550126433
+ls
+#1550126435
+ll
+#1550126445
+vim apps-4.0.log 
+#1550126578
+cd 
+#1550126579
+cd ../
+#1550126582
+cd /opt/
+#1550126582
+l;
+#1550126584
+ll
+#1550126585
+cd apps-4.0/
+#1550126585
+l
+#1550126586
+ll
+#1550126590
+cd config/
+#1550126592
+ll
+#1550126594
+vim application.yml 
+#1550126625
+cd ../
+#1550126629
+./start.sh stop
+#1550126634
+./start.sh start
+#1550126638
+ll
+#1550126640
+cd logs/
+#1550126641
+;;
+#1550126642
+ll
+#1550126652
+rm -rf anti_theft.2019-01-13.log 
+#1550126653
+ll
+#1550126659
+vim apps-4.0.log 
+#1550126672
+cd ../
+#1550126675
+lll
+#1550126676
+ll
+#1550126678
+cd ../
+#1550126679
+ll
+#1550126684
+cd token-1.0/
+#1550126684
+;;
+#1550126686
+ll
+#1550126687
+cd logs/
+#1550126688
+ll
+#1550126707
+vim token-1.0.log 
+#1550126821
+whereis nginx
+#1550126825
+cd /etc/
+#1550126828
+cd nginx/
+#1550126830
+ll
+#1550126837
+vim conf.d/default.conf 
+#1550127472
+nginx -t
+#1550127476
+nginx -s reload
+#1550127478
+nginx -s reload
+#1550127481
+nginx -t
+#1550127486
+cd /opt/
+#1550127487
+ll
+#1550127489
+cd apps-4.0/
+#1550127490
+ll
+#1550127492
+cd logs/
+#1550127492
+ll
+#1550127498
+vim apps-4.0.log 
+#1550127506
+vim anti_theft.2019-02-14.log 
+#1550127522
+cd ../../
+#1550127523
+ll
+#1550127525
+cd tp
+#1550127528
+cd token-1.0/
+#1550127529
+ll
+#1550127530
+cd logs/
+#1550127531
+ll
+#1550127594
+tar -zcvf token.2019-02-13.0.gz
+#1550127607
+tar -zxvf token.2019-02-13.0.gz
+#1550127623
+vim token.2019-02-13.0.gz
+#1550127641
+rm -rf token.*
+#1550127642
+ll
+#1550127648
+vim token
+#1550127654
+rm -rf token
+#1550127654
+ll
+#1550127659
+rm -rf token-1.0.log 
+#1550127660
+ll
+#1550127848
+ll
+#1550127854
+cd ../../apps-4.0/
+#1550127855
+ll
+#1550127857
+cd logs/
+#1550127857
+ll
+#1550127861
+vim apps-4.0.log 
+#1550129655
+cd /opt/
+#1550129655
+ll
+#1550129657
+cd apps-4.0/
+#1550129658
+ll
+#1550129774
+./start.sh  stop
+#1550129778
+./start.sh  start
+#1550130104
+./start.sh  stop
+#1550130107
+./start.sh  start
+#1550127971
+tail -100f apps-4.0.log 
+#1550130389
+./start.sh  stop
+#1550130391
+./start.sh  start
+#1550130815
+./start.sh  stop
+#1550130817
+./start.sh  start
+#1550131564
+./start.sh  stop
+#1550131600
+./start.sh  start
+#1550131659
+whereis mysql
+#1550131669
+cd /usr/local/mysql/
+#1550131670
+ll
+#1550131674
+cd bin/
+#1550131675
+ll
+#1550131692
+cp my* /usr/bin/
+#1550131700
+cp my* /usr/bin/
+#1550131734
+ll
+#1550131811
+mysql -V
+#1550131902
+cd /etc/
+#1550131903
+ll
+#1550131910
+cd /opt/apps-4.0/
+#1550131910
+ll
+#1550131912
+cd config/
+#1550131913
+ll
+#1550131916
+vim application-prod.yml 
+#1550131944
+cd ../
+#1550131948
+./start.sh stop
+#1550131953
+./start.sh start
+#1550132317
+ll
+#1550132326
+vim config/application.yml 
+#1550132348
+vim config/application-prod.yml 
+#1550132365
+vim start.sh 
+#1550132403
+./start.sh stop
+#1550132407
+./start.sh start
+#1550132809
+./start.sh stop
+#1550132860
+./start.sh start
+#1550130396
+tail -100f apps-4.0.log 
+#1550132875
+tail -100f apps-4.0.log 
+#1550214869
+cd /opt/apps-4.0/
+#1550214951
+./start.sh stop
+#1550214956
+./start.sh start
+#1550214966
+tail -100f logs/apps-4.0.log 
+#1550215966
+./start.sh stop
+#1550215970
+./start.sh start
+#1550215973
+tail -100f logs/apps-4.0.log 
+#1550545080
+ll
+#1550545084
+cd /opt/
+#1550545085
+ll
+#1550545088
+cd apps-4.0/
+#1550545089
+ll
+#1550545091
+cd logs/
+#1550545092
+ll
+#1550545102
+vim apps-4.0.log 
+#1550545132
+ll
+#1550547818
+ll
+#1550547819
+wget 
+#1550547823
+wget https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.24-linux-glibc2.12-x86_64.tar.gz
+#1550553909
+ll
+#1550553914
+df -sh
+#1550553917
+df -h
+#1550553922
+ls
+#1550553925
+ll
+#1550553930
+history
+#1550553947
+ll
+#1550553952
+df -h mysql-5.7.24-linux-glibc2.12-x86_64.tar.gz 
+#1550553958
+df -h
+#1550554012
+history
+#1550554223
+ll
+#1550559633
+mysql -uroot -p
+#1550559938
+ll
+#1550559939
+htop
+#1550559975
+jps
+#1550566791
+musql -uroot 
+#1550566793
+musql -uroot -p
+#1550566796
+mysql -uroot -p
+#1550720743
+cat /etc/shells
+#1550733150
+last -n 5
+#1550733170
+last -n 5 | awk  '{print $1}'
+#1550733184
+cat /etc/passwd |awk  -F ':'  '{print $1}'  
+#1550733202
+cat /etc/passwd |awk  -F ':'  '{print $1"t"$7}'
+#1550733216
+cat /etc/passwd |awk  -F ':'  'BEGIN {print "name,shell"}  {print $1","$7} END {print "blue,/bin/nosh"}'
+#1550733227
+awk -F: '/root/' /etc/passwd
+#1550734732
+who
+#1550734744
+w
+#1550734747
+uptime
+#1550734759
+awk -F: '$3==0{print $1}' /etc/passwd
+#1550734766
+awk '/$1|$6/{print $1}' /etc/shadow
+#1550734778
+more /etc/sudoers | grep -v "^#|^$" | grep "ALL=(ALL)"
+#1550734808
+.bash_history
+#1550734829
+sed -i 's/^HISTSIZE=1000/HISTSIZE=10000/g' /etc/profile
+#1550734869
+cat .bash_history >> history.txt
+#1550734871
+ls
+#1550734873
+ll
+#1550734875
+vim history.txt 
+#1550734893
+netstat -antlp|more
+#1550734928
+ps aux | grep pid 
+#1550734933
+ps aux | grep pid 
+#1550734944
+runlevel   
+#1550734959
+more /etc/rc.local
+#1550734971
+ls -l /etc/rc.d/rc3.d/
+#1550734983
+crontab -l
+#1550735016
+more /etc/cron.daily/*
+#1550735047
+chkconfig  --list
+#1550735061
+ps aux | grep crond
+#1550735073
+chkconfig --list | grep
+#1550735092
+chkconfig --list | grep "3:on|5:on"
+#1550735109
+service httpd start
+#1550735128
+grep "Failed password for root" /var/log/secure | awk '{print $11}' | sort | uniq -c | sort -nr | more
+#1550735155
+grep "Failed password" /var/log/secure|grep -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"|uniq -c
+#1550735170
+grep "Failed password" /var/log/secure|perl -e 'while($_=<>){ /for(.*?) from/; print "$1
+";}'|uniq -c|sort -nr
+#1550735182
+grep "Accepted " /var/log/secure | awk '{print $11}' | sort | uniq -c | sort -nr | more
+#1550735193
+grep "Accepted " /var/log/secure | awk '{print $1,$2,$3,$9,$11}' 
+#1550735228
+Jul1000:12:15localhostuseradd[2382]: newgroup: name=kali, GID=1001
+#1550735228
+Jul1000:12:15localhostuseradd[2382]: newuser: name=kali, UID=1001, GID=1001, home=/home/kali
+#1550735228
+, shell=/bin/bash
+#1550735228
+Jul1000:12:58localhostpasswd: pam_unix(passwd:chauthtok): passwordchangedforkali
+#1550735301
+awk -F: '$3==0{print $1}' /etc/passwd
+#1550735309
+awk '/$1|$6/{print $1}' /etc/shadow
+#1550735333
+grep -o "Failed password" /var/log/secure|uniq -c
+#1550735344
+grep "Failed password" /var/log/secure|head -1
+#1550735361
+grep "Failed password" /var/log/secure|tail -1
+#1550735374
+grep "Failed password" /var/log/secure|grep -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"|uniq -c | sort -nr
+#1550735395
+grep "Failed password" /var/log/secure|perl -e 'while($_=<>){ /for(.*?) from/; print "$1
+";}'|uniq -c|sort -nr
+#1550735419
+grep "Accepted " /var/log/secure | awk '{print $1,$2,$3,$9,$11}' 
+#1550735448
+grep "Accepted " /var/log/secure | awk '{print $11}' | sort | uniq -c | sort -nr | more
+#1550735527
+find / -size -1223124c -size +1223122c -exec ls -id {} ;
+#1551082991
+yum update
+#1551085699
+yum
+#1551085705
+yum update
+#1551086493
+ip addr
+#1551150233
+htop
+#1551150244
+ifconfig
+#1551150262
+jps
+#1551150275
+yum update
+#1551774532
+history
+#1551774542
+jps
+#1551774546
+docker
+#1551774571
+uname -r 
+#1551774579
+yum update -y
+#1551774599
+sudo yum remove docker                   docker-client                   docker-client-latest                   docker-common                   docker-latest                   docker-latest-logrotate                   docker-logrotate                   docker-selinux                   docker-engine-selinux                   docker-engine
+#1551774615
+yum install docker-ce
+#1551774626
+sudo yum-config-manager     --add-repo     https://download.docker.com/linux/centos/docker-ce.repo
+#1551774631
+yum install docker-ce
+#1551774742
+docker info
+#1551774748
+docker version
+#1551774778
+yum list docker-ce --showduplicates | sort -r
+#1551774899
+htop
+#1552007796
+ls
+#1552007797
+ll
+#1552007800
+ls
+#1552007803
+ll
+#1552007805
+vim history.txt 
+#1552007815
+rm -rf history.txt 
+#1552007819
+vim upload_sftp.log 
+#1552007824
+vim upload_sftp.log 
+#1552007835
+rm -rf upload_sftp.log 
+#1552007836
+ll
+#1552007843
+crontab -e
+#1552008755
+cd /etc/nginx/
+#1552008816
+ll
+#1552008820
+vim conf.d/default.conf 
+#1552876747
+uname -r
+#1552876753
+yum update
+#1552876786
+yum update
+#1552876879
+python
+#1552876950
+history
+#1552876968
+yum remove python
+#1552877397
+cd /opt/
+#1552877440
+yum -y install zlib zlib-devel
+#1552877448
+yum -y install bzip2 bzip2-devel
+#1552877450
+yum -y install ncurses ncurses-devel
+#1552877455
+yum -y install readline readline-devel
+#1552877457
+yum -y install openssl openssl-devel
+#1552877469
+yum -y install openssl-static
+#1552877475
+yum -y install xz lzma xz-devel
+#1552877481
+yum -y install sqlite sqlite-devel
+#1552877484
+yum -y install gdbm gdbm-devel
+#1552877487
+yum -y install tk tk-devel
+#1552877402
+wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tgz
+#1552877598
+ls
+#1552877600
+ll
+#1552877613
+tar -xvzf Python-3.7.2.tgz 
+#1552877628
+cd Python-3.7.2/
+#1552877630
+ll
+#1552877663
+./configure --prefix=/usr/python --enable-shared CFLAGS=-fPIC
+#1552877731
+./configure --prefix=/usr/python
+#1552877763
+yum install -y gcc
+#1552877849
+./configure --prefix=/usr/python
+#1552877868
+yum -y install libffi libffi-devel
+#1552877856
+./configure --prefix=/usr/python --enable-shared CFLAGS=-fPIC
+#1552877912
+make 
+#1552877919
+htop
+#1552878182
+docker
+#1552878110
+make  install
+#1552878206
+ll
+#1552878193
+yum list docker
+#1552878213
+cd /usr/python/
+#1552878214
+ll
+#1552878217
+cd ../
+#1552878217
+ll
+#1552878221
+ls
+#1552878233
+cd bin/
+#1552878233
+ll
+#1552878248
+ls python
+#1552878252
+ls python3
+#1552878259
+ll -ltr
+#1552878261
+ll
+#1552878263
+ls
+#1552878323
+ln -s /usr/python/bin/python3 /usr/bin/python3
+#1552878324
+ln -s /usr/python/bin/pip3 /usr/bin/pip3
+#1552878327
+ll
+#1552878332
+python
+#1552878336
+lll
+#1552878336
+ll
+#1552878379
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+#1552878395
+docker version
+#1552878399
+htop
+#1552878470
+docker images
+#1552878474
+docker run
+#1552878502
+ps -qa maven 
+#1552878504
+maven 
+#1552878554
+cd /opt/
+#1552878555
+ll
+#1552878568
+rm -rf P*
+#1552878570
+ll
+#1552878574
+wget http://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz
+#1552878579
+ll
+#1552878596
+tar -xvzf apache-maven-3.6.0-bin.tar.gz 
+#1552878603
+ll
+#1552878608
+cd apache-maven-3.6.0/
+#1552878610
+ll
+#1552878618
+mkdir /usr/local/maven
+#1552878629
+ll
+#1552878631
+cd ../
+#1552878632
+ll
+#1552878642
+mv apache-maven-3.6.0 /usr/local/maven
+#1552878644
+ll
+#1552878651
+cd /usr/local/maven/
+#1552878652
+ll
+#1552878678
+cd apache-maven-3.6.0/
+#1552878678
+ll
+#1552878687
+mc * /usr/local/maven/
+#1552878688
+ll
+#1552878699
+ll
+#1552878706
+mv * /usr/local/maven/
+#1552878707
+ll
+#1552878708
+ll
+#1552878709
+cd ../
+#1552878711
+ll
+#1552878716
+rm -rf apache-maven-3.6.0/
+#1552878717
+ll
+#1552878750
+vim /etc/profile.d/maven.sh
+#1552878835
+source /etc/profile
+#1552878843
+mvn -v
+#1552878871
+cd /opt/
+#1552878872
+ll
+#1552878879
+rm -rf apache-maven-3.6.0-bin.tar.gz 
+#1552878879
+ll
+#1552878882
+vim upload.sh 
+#1552878898
+mkdir sh
+#1552878904
+mv upload.sh sh/
+#1552878905
+ll
+#1552878913
+cd rh/
+#1552878913
+ll
+#1552878923
+cd ../ rm -rf rh
+#1552878924
+ll
+#1552878931
+rm -rf rh
+#1552878933
+ll
+#1552878947
+rm -rf apps-4.0-bin.zip token-1.0-bin.zip 
+#1552878948
+ll
+#1552878953
+ll
+#1552878992
+mkdir apache-maven-3.6.0
+#1552878994
+ll
+#1552879032
+mv bin/ boot/ conf/ lib/ LICENSE  NOTICE README.txt apache-maven-3.6.0/
+#1552879034
+ll
+#1552879058
+mkfir RepMaven
+#1552879063
+mkdir RepMaven
+#1552879064
+ll
+#1552879069
+history
+#1552879079
+vim /etc/profile.d/maven.sh
+#1552879092
+history
+#1552879099
+source /etc/profile
+#1552879102
+mvn -v
+#1552879106
+ll
+#1552879111
+cd apache-maven-3.6.0/conf/
+#1552879114
+ll
+#1552879185
+llll
+#1552879186
+ll
+#1552879193
+cd /usr/local/maven/
+#1552879194
+ll
+#1552879197
+cd RepMaven/
+#1552879198
+ll
+#1552879199
+pwd
+#1552879117
+vim settings.xml 
+#1552879535
+cd /opt/
+#1552879536
+ll
+#1552879565
+unzip tests.zip 
+#1552879567
+ll
+#1552879585
+rm -rf pom.xml  src/ tests.iml 
+#1552879586
+ll
+#1552879593
+unzip tests.zip tests
+#1552879602
+unzip -d tests.zip tests
+#1552879671
+unzip -d tests tests.zip 
+#1552879673
+ll
+#1552879677
+cd tests/
+#1552879677
+ll
+#1552879769
+docker images
+#1552879779
+docker run
+#1552879790
+docker --help
+#1552879862
+systemctl start docker
+#1552879882
+htop
+#1552879892
+jps
+#1552879906
+kill -9 27633 14455
+#1552879908
+jps
+#1552880029
+docker search jdk  
+#1552879687
+mvn clean package docker:build -DskipTests
+#1552880109
+docker image
+#1552880111
+docker images
+#1552880066
+docker pull jboss/base-jdk:8
+#1552880161
+docker images
+#1552880126
+docker run codec-service
+#1552880269
+curl 127.0.0.1:8090/test/check
+#1552880348
+firewalled status
+#1552880395
+systemctl status firewalld
+#1552880220
+docker run -p 8090:8090 codec-service
+#1552880758
+docker run -d -p 8090:8090 codec-service
+#1552880784
+docker logs  -f -t 74646848a7731eb2bc79b0c91909bb4915ae2d781746d78ada5fe0e92dcad1d2
+#1552880803
+docker ps
+#1552880819
+htop
+#1552880996
+docker ps -a 
+#1552881013
+ docker ps
+#1552881017
+docker ps -a 
+#1552881047
+docker stop docker
+#1552881058
+docker ps -a 
+#1552881073
+docker stop 7347f2d40f3b
+#1552881081
+docker stop a30545f50b8b
+#1552881084
+docker ps -a 
+#1552881098
+docker kill a30545f50b8b
+#1552881107
+docker ps -a 
+#1552881117
+docker kill 7347f2d40f3b
+#1552881125
+docker kill 74646848a773
+#1552881128
+docker ps -a 
+#1552881173
+docker images
+#1552881212
+docker rm 74646848a773 a30545f50b8b 7347f2d40f3b
+#1552881223
+history
+#1552881234
+docker run -d -p 8090:8090 codec-service
+#1552881242
+docker logs  -f -t 74646848a7731eb2bc79b0c91909bb4915ae2d781746d78ada5fe0e92dcad1d2
+#1552881257
+docker logs  -f -t a2d16d8a12d5886742a8d31dd7274cd4e5c496112f07521224ac26c1fef360c9
+#1552881274
+docker ps -a
+#1552881286
+htop
+#1552890292
+docker logs  -f -t a2d16d8a12d5886742a8d31dd7274cd4e5c496112f07521224ac26c1fef360c9
+#1552894261
+ll
+#1552894263
+cd /opt/
+#1552894265
+ll
+#1552894268
+cd tests/
+#1552894268
+ll
+#1552894270
+cd target/
+#1552894271
+ll
+#1552894277
+cd docker/
+#1552894278
+ll
+#1552894287
+vim 
+#1552894310
+vim Dockerfile 
+#1552894412
+ll
+#1552894414
+cd ../
+#1552894415
+ll
+#1552894420
+cd ../
+#1552894423
+rm -rf target/
+#1552894424
+ll
+#1552894432
+docker =s -a
+#1552894435
+docker ps -a
+#1552894447
+docker stop a2d16d8a12d5
+#1552894475
+docker run -d -p 8090:8090 codec-service
+#1552894493
+top
+#1552894503
+htop
+#1552894545
+docker search  redis
+#1552979563
+hto
+#1552979565
+htop
+#1552979578
+docker pull redis 
+#1552979619
+redis -cli
+#1552979623
+redis-cli
+#1552979653
+whereis redis
+#1552979674
+docker images
+#1552980088
+docker rm 8a832b9f0f57
+#1552980119
+cd /opt/
+#1552980120
+ll
+#1552980205
+docker images
+#1552980219
+docker rmi jboss/base-jdk
+#1552980231
+docker rmi 8a832b9f0f57
+#1552980255
+docker images
+#1552980265
+docker ps -a
+#1552980278
+docker stop 7dc13c830e40
+#1552980302
+docker stop a2d16d8a12d5
+#1552980310
+docker ps -a
+#1552980322
+docker rm 7dc13c830e40
+#1552980329
+docker rm a2d16d8a12d5
+#1552980333
+history
+#1552980341
+docker run -d -p 8090:8090 codec-service
+#1552980362
+docker logs -f -t a917bd2d40ec4b667dd4e95f142d1af477d4d2ee48139aa4bd291186aa0ae81f
+#1552980455
+df -h
+#1552981855
+vim /etc/ssh/sshd_config 
+#1553044671
+ll
+#1553044680
+cd containerd/
+#1553044681
+ll
+#1553044683
+cd bin/
+#1553044684
+ll
+#1553044687
+cd ../
+#1553044691
+cd lib/
+#1553044692
+ll
+#1553044695
+cd ../
+#1553044696
+;;
+#1553044697
+cd ../
+#1553044698
+ll
+#1553044705
+rm -rf containerd/
+#1553044706
+ll
+#1553044714
+docker images
+#1553044762
+docker pa -a
+#1553044767
+docker ps -a
+#1553044780
+docker stop a917bd2d40ec
+#1553044803
+docker images
+#1553044883
+docker rmi 9d841a939078
+#1553044896
+docker rmi codec-service
+#1553044915
+docker images
+#1553044926
+focker rmi 0f88f9be5839
+#1553044931
+docker rmi 0f88f9be5839
+#1553044949
+docker rmi d23bdf5b1b1b
+#1553044960
+docker ps -a
+#1553044970
+docker kill a917bd2d40ec
+#1553044999
+docker stop a917bd2d40ec
+#1553045006
+docker ps -a
+#1553045018
+docker rmi 9d841a939078
+#1553045038
+docker stop
+#1553045044
+docker stop a917bd2d40ec
+#1553045064
+docker rm a917bd2d40ec
+#1553045073
+docker ps -a
+#1553045079
+docker images
+#1553045088
+docker rmi 9d841a939078
+#1553045094
+docker images
+#1553045159
+htop
+#1553045167
+htop
+#1553045103
+docker rmi d23bdf5b1b1b
+#1553045190
+docker rmi d23bdf5b1b1b
+#1553045198
+docker images
+#1553046321
+docker search java
+#1553046357
+docker pull java:8
+#1553048242
+ll
+#1553048248
+docker image
+#1553048252
+docker images
+#1553048475
+docker rmi d23bdf5b1b1b
+#1553051647
+ll
+#1553051650
+cd tests/
+#1553051651
+ll
+#1553051748
+mvn clean package docker:build -DskipTests
+#1553051810
+ll
+#1553051820
+mvn clean
+#1553051830
+mvn -v
+#1553051833
+mvn clean
+#1553051761
+htop
+#1553051944
+cd /usr/bin/
+#1553051944
+ll
+#1553051962
+ls con
+#1553051965
+ll con
+#1553051983
+htop
+#1553052024
+ll
+#1553052050
+concd containerd
+#1553052056
+cd containerd
+#1553052066
+vim containerd
+#1553052102
+whereis nginx
+#1553051862
+mvn clean package docker:build -DskipTests
+#1553052272
+docker images
+#1553052378
+docker ps -a
+#1553052836
+df -h
+#1553052852
+cd /dev/vda1
+#1553052858
+cd /dev/
+#1553052859
+ll
+#1553052867
+cd vda1
+#1553052874
+vim vda1 
+#1553052887
+ls vda
+#1553052891
+ll vda
+#1553052896
+ll vda1
+#1553052916
+df -h
+#1553061904
+htop
+#1553070939
+cd /home/
+#1553070940
+ll
+#1553070971
+ftp
+#1553070982
+ps -ef|grep vsftpd
+#1553074357
+history
+#1553074556
+sftp sjdq@111.205.128.7
+#1553074730
+lftp -u sjdq,sjdq@GAB sftp://111.205.128.7:22
+#1553131390
+lftp -u sjdq,sjdq@GAB sftp://111.205.128.7:22
+#1553135361
+vim /etc/ssh/sshd_config
+#1553138818
+lftp -u sjdq,sjdq@GAB sftp://111.205.128.7:22
+#1553139174
+ll
+#1553139175
+cd /opt/
+#1553139176
+ll
+#1553139184
+touch test.txt
+#1553139188
+lftp -u sjdq,sjdq@GAB sftp://111.205.128.7:22
+#1553143075
+history
+#1553143110
+lftp -u xzsftp,dec123 sftp://222.85.178.110:22
+#1553143705
+lftp -u xzsftp,dec123 sftp://222.85.178.110:22
+#1553144248
+lftp -u xzsftp,dec123 sftp://222.85.178.110:22
+#1553147314
+sftp xzsftp@222.85.178.110
+#1553147446
+sftp xzftp@222.85.178.110
+#1553147616
+sftp xzftp@222.85.178.110
+#1553147691
+sftp xzftp@222.85.178.110
+#1553147704
+telnet 222.85.178.110 22
+#1553147725
+pm -qa telnet* 
+#1553147729
+rpm -qa telnet* 
+#1553147753
+yum install telnet.*
+#1553147784
+telnet 222.85.178.110 22
+#1553147791
+telnet 222.85.178.110 6669
+#1553147837
+sftp -P 6669 xzftp@222.85.178.110
+#1553147860
+cd /opt/
+#1553147861
+ll
+#1553147868
+sftp -P 6669 xzftp@222.85.178.110
+#1553147923
+history
+#1553147943
+lftp -u xzftp,dec123 sftp://222.85.178.110:6669
+#1553148005
+lftp -u xzftp,dec123 sftp://222.85.178.110:6669
+#1553149324
+lftp -u xzftp,dec123 sftp://222.85.178.110:6669
+#1553150002
+history
+#1553150019
+lftp -u sjdq,sjdq@GAB sftp://111.205.128.7:22
+#1553157521
+ls
+#1553157524
+history
+#1553158602
+ll
+#1553158606
+cd /home/
+#1553158606
+ll
+#1553158613
+mkdir xzftp
+#1553158616
+cd xzftp/
+#1553158617
+ll
+#1553158622
+mkdir imei
+#1553158623
+ll
+#1553158628
+cd shell
+#1553158631
+mkdir shell
+#1553158632
+cd shell/
+#1553158647
+ls
+#1553158648
+ll
+#1553158657
+chmod +x get_imeifile.sh 
+#1553158658
+ll
+#1553158659
+ls
+#1553158661
+sh get_imeifile.sh 
+#1553158686
+vim get_imeifile.sh 
+#1553158726
+sh get_imeifile.sh 
+#1553158735
+vim get_imeifile.sh 
+#1553158744
+sh get_imeifile.sh 
+#1553158751
+vim get_imeifile.sh 
+#1553158766
+sh get_imeifile.sh 
+#1553158774
+vim get_imeifile.sh 
+#1553158798
+history
+#1553158812
+lftp -u sjdq,sjdq@GAB sftp://111.205.128.7:22
+#1553158820
+vim get_imeifile.sh 
+#1553158838
+sh get_imeifile.sh 
+#1553158851
+vim get_imeifile.sh 
+#1553158875
+sh get_imeifile.sh
+#1553158889
+vim get_imeifile.sh 
+#1553158901
+sh get_imeifile.sh
+#1553158912
+lftp -u sjdq,sjdq@GAB sftp://111.205.128.7:22
+#1553159028
+ll
+#1553159035
+vim imei_ftp.log 
+#1553159059
+vim get_imeifile.sh 
+#1553159088
+sh get_imeifile.sh
+#1553159111
+vim get_imeifile.sh 
+#1553159144
+sh get_imeifile.sh 
+#1553159148
+vim imei_ftp.log 
+#1553158986
+sftp sjdq@111.205.128.7
+#1553159227
+ll
+#1553159234
+cd ../imei/
+#1553159234
+ll
+#1553159240
+rm -rf 20190321153800.txt 
+#1553159240
+ll
+#1553159247
+cd ../shell/
+#1553159247
+ll
+#1553159256
+vim get_imeifile.sh 
+#1553159350
+sh get_imeifile.sh 
+#1553159362
+cd ../
+#1553159368
+ll
+#1553159369
+cd shell/
+#1553159373
+cd ../imei/
+#1553159374
+ll
+#1553159376
+cd ../
+#1553159377
+ll
+#1553159378
+cd shell/
+#1553159379
+;;
+#1553159380
+ll
+#1553159383
+vim get_imeifile.sh 
+#1553159438
+sh get_imeifile.sh 
+#1553159183
+lftp -u sjdq,sjdq@GAB sftp://111.205.128.7:22
+#1553159459
+ll
+#1553159464
+cd /home/
+#1553159464
+ll
+#1553159467
+cd xzftp/
+#1553159467
+ll
+#1553159491
+touch 20190321160000.txt
+#1553159529
+sh get_imeifile.sh 
+#1553159537
+cd ../
+#1553159540
+cd imei/
+#1553159540
+ll
+#1553159543
+cd ../
+#1553159544
+ll
+#1553159546
+cd shell/
+#1553159548
+ll
+#1553159550
+vim imei_ftp.log 
+#1553159587
+ll
+#1553159495
+lftp -u sjdq,sjdq@GAB sftp://111.205.128.7:22
+#1553159617
+ll
+#1553159589
+vim get_imeifile.sh 
+#1553159935
+sh get_imeifile.sh 
+#1553159954
+vim imei_ftp.log 
+#1553159971
+vim imei_ftp.log 
+#1553159984
+vim get_imeifile.sh 
+#1553160002
+sh get_imeifile.sh 
+#1553160009
+cd ../imei/
+#1553160010
+ll
+#1553160016
+rm -rf 20190321160000.txt 
+#1553160018
+ll
+#1553160141
+touch imei_20190321160000.txt
+#1553160169
+cd ../
+#1553160170
+ll
+#1553160173
+cd shell/
+#1553160174
+ll
+#1553160176
+vim get_imeifile.sh 
+#1553160220
+sh get_imeifile.sh 
+#1553160233
+vim get_imeifile.sh 
+#1553160255
+vim imei_ftp.log 
+#1553160261
+vim get_imeifile.sh 
+#1553160292
+sh get_imeifile.sh 
+#1553160295
+sh get_imeifile.sh 
+#1553160298
+ll
+#1553160301
+vim imei_ftp.log 
+#1553160332
+vim get_imeifile.sh 
+#1553160366
+sh get_imeifile.sh 
+#1553160377
+cd ../imei/
+#1553160379
+ll
+#1553160384
+rm-rf imei_20190321160000.txt 
+#1553160385
+ll
+#1553160389
+rm -rf imei_20190321160000.txt 
+#1553160391
+cd ../
+#1553160392
+ll
+#1553160394
+cd shell/
+#1553160394
+ll
+#1553160396
+sh get_imeifile.sh 
+#1553160399
+ll
+#1553160403
+vim get_imeifile.sh 
+#1553160413
+vim imei_ftp.log 
+#1553160419
+ll
+#1553160423
+cd ../imei/
+#1553160424
+ll
+#1553160428
+rm -rf imei_20190321160000.txt 
+#1553160429
+ll
+#1553160444
+cd ../
+#1553160447
+cd shell/
+#1553160448
+ll
+#1553160454
+vim imei_ftp.log 
+#1553160469
+vim get_imeifile.sh 
+#1553160499
+sh get_imeifile.sh 
+#1553160506
+vim imei_ftp.log 
+#1553160144
+lftp -u sjdq,sjdq@GAB sftp://111.205.128.7:22
+#1553160832
+ll
+#1553160834
+cd ../
+#1553160835
+ll
+#1553160840
+rm -rf xzftp/
+#1553160840
+ll
+#1553160843
+cd web/
+#1553160844
+ll
+#1553160845
+cd ../
+#1553160846
+ll
+#1553160848
+cd jingtu/
+#1553160848
+ll
+#1553160852
+cd ../
+#1553160853
+ll
+#1553160858
+rm rf jingtu/
+#1553160859
+ll
+#1553160862
+rm rf jingtu
+#1553160863
+ll
+#1553160875
+rm -rf jingtu
+#1553160876
+ll
+#1553160879
+cd apps/
+#1553160880
+ll
+#1553160882
+ll
+#1553160884
+bye
+#1553160886
+exit
+#1553160549
+vim get_imeifile.sh 
+#1553160891
+exit
+#1553485830
+ls
+#1553485832
+lftp -u sjdq,sjdq@GAB sftp://111.205.128.7:2
+#1553485842
+lftp -u sjdq,sjdq@GAB sftp://111.205.128.7:22
+#1553494975
+history
+#1553496991
+crontab -e
+#1553504269
+telnet 222.85.178.110 3306
+#1553504278
+telnet 222.85.178.110 6669
+#1553504284
+telnet 222.85.178.110 22
+#1553504289
+telnet 222.85.178.110 443
+#1553504295
+telnet 222.85.178.110 443
+#1553565550
+ls
+#1553565559
+lftp -u sjdq,sjdq@GAB sftp://111.205.128.7:22
+#1553761740
+uname -a
+#1553761760
+yum update
+#1553827484
+ifconfig
+#1553827650
+telnet telnet 192.168.247.207 443 3306
+#1553827657
+ telnet 192.168.247.207 443 3306
+#1553827662
+ telnet 192.168.247.207 3306
+#1554083369
+ls
+#1554083370
+ll
+#1554083375
+history
+#1554083384
+lftp -u sjdq,sjdq@GAB sftp://111.205.128.7:22
+#1554086534
+ls
+#1554106860
+whersis nginx
+#1554106865
+whereis nginx
+#1554106885
+whereis nginx
+#1554106921
+vim /etc/nginx/nginx.conf 
+#1554106935
+cd /etc/g
+#1554106937
+cd /etc/nginx/
+#1554106938
+ll
+#1554106942
+cd
+#1554106959
+pwd
+#1554106964
+cd /etc/nginx/
+#1554106971
+cd conf.d/
+#1554106974
+vim default.conf 
+#1554168866
+cd /etc/nginx/
+#1554168866
+ll
+#1554168882
+vim conf.d/default.conf 
+#1554170687
+ll
+#1554170696
+cd /etc/nginx/
+#1554170699
+vim conf.d/default.conf 
+#1554194726
+vim /etc/profile
+#1554282860
+ll
+#1554282868
+cd /etc/nginx/
+#1554282872
+vim conf.d/default.conf 
+#1554691863
+ll
+#1554691866
+cd /home/
+#1554691868
+ll
+#1554691894
+ll
+#1554691900
+useradd -m -d /home/web1 -s /bin/bash web1
+#1554691925
+pwsswd web1
+#1554691931
+passwd web1
+#1554691943
+su - web1
+#1554692065
+cd /home/web1
+#1554692066
+ll
+#1554692067
+cd log/
+#1554692069
+l
+#1554692070
+ll
+#1554692079
+setfacl —modify d:u:web:rwx .
+#1554692089
+setfacl help
+#1554692097
+setfacl --help
+#1554692110
+setfacl —m d:u:web:rwx .
+#1554692126
+setfacl —m d:u:web:rwx
+#1554692231
+setfacl —m u:web:rwx .
+#1554692317
+setfacl —d u:web:rwx .
+#1554692586
+setfacl — u:web:rwx /home/web1/log/
+#1554693321
+ll
+#1554693324
+cd /home/
+#1554693325
+l
+#1554693326
+ll
+#1554693397
+chgrp -R web /home/web1
+#1554693399
+ll
+#1554693404
+ll
+#1554693571
+ll
+#1554693575
+cd /home/
+#1554693575
+ll
+#1554693577
+cd web
+#1554693582
+cd ../web1
+#1554693583
+lll
+#1554693585
+l
+#1554693585
+ll
+#1554693615
+cd log/
+#1554693616
+ls
+#1554693617
+ll
+#1554693668
+cat /etc/passwd
+#1554693704
+cd /home/
+#1554693704
+ls
+#1554693705
+ll
+#1554693829
+chmod 740 web1
+#1554693832
+ll
+#1554693889
+chmod 750 web1
+#1554693903
+chmod 750 web1
+#1554693934
+chmod 750 web1
+#1554693940
+ll
+#1554693985
+ll
+#1554694208
+cat /etc/group
+#1554694268
+history
+#1554693411
+su - web
+#1554694440
+ll
+#1554694452
+userdel -r -f web
+#1554694457
+userdel -r -f web1
+#1554694459
+cd /home/
+#1554694460
+ll
+#1554694466
+history
+#1554694472
+cat /etc/group
+#1554694484
+cat /etc/passwd
+#1554694498
+useradd -m -d /home/web -s /bin/bash web
+#1554694507
+useradd -m -d /home/web1 -s /bin/bash web
+#1554694560
+userdel -r -f web1
+#1554694562
+userdel -r -f web
+#1554694572
+useradd -m -d /home/web -s /bin/bash web -g web
+#1554694960
+useradd -m -d /home/web -s /bin/bash web
+#1554694963
+useradd -m -d /home/web -s /bin/bash web1
+#1554694968
+useradd -m -d /home/web1 -s /bin/bash web1
+#1554694973
+userdel -r -f web1
+#1554694977
+useradd -m -d /home/web1 -s /bin/bash web1
+#1554694978
+ll
+#1554694980
+ll
+#1554694985
+useradd -m -d /home/web -s /bin/bash web
+#1554694992
+userdel -r -f web
+#1554694999
+useradd -m -d /home/web -s /bin/bash web
+#1554695001
+ll
+#1554695009
+su - web1
+#1554695050
+ll
+#1554695055
+history
+#1554695066
+chgrp -R web /home/web1
+#1554695073
+cat /etc/group
+#1554695084
+cat /etc/passwd
+#1554695093
+su - web
+#1554695117
+chmod 750 web1
+#1554695119
+ll
+#1554695124
+su - wev
+#1554695129
+su - web
+#1554695166
+passwd web
+#1554696743
+top
+#1554696754
+htop
+#1554696781
+date
+#1554696984
+ll
+#1554696987
+cd web1/
+#1554696988
+ll
+#1554696989
+cd log/
+#1554696991
+ll
+#1554697043
+mv 123.txt 20190408121700009.txt
+#1554697044
+ll
+#1554697122
+whereis java
+#1554697143
+cd /usr/java/jdk1.8.0_191/jre/lib/ext/
+#1554697150
+wget http://central.maven.org/maven2/org/bouncycastle/bcprov-jdk15/1.46/bcprov-jdk15-1.46.jar
+#1554697155
+ll
+#1554697741
+history
+#1554706186
+history
+#1554964613
+ll
+#1554964617
+whereis nginx
+#1554964631
+whereis nginx
+#1554964644
+htop
+#1554964660
+docker stop
+#1554964676
+docker --help
+#1554964686
+ps -ef|grep docker
+#1554964701
+kill -9 5182
+#1554964703
+ps -ef|grep docker
+#1554964708
+jps
+#1554964713
+ll
+#1554964722
+cd /etc/nginx/
+#1554964722
+ll
+#1554964731
+cd jingtu/
+#1554964732
+ll
+#1555384189
+ll
+#1555384193
+cd /etc/
+#1555384194
+ll
+#1555384198
+vim host
+#1555386436
+vim /etc/hosts
+#1555386592
+ll
+#1555386594
+jps
+#1555386622
+jps
+#1555386632
+java -version
+#1555386639
+mvn -v
+#1555386666
+ll
+#1555386670
+df -h
+#1555386684
+cd /home/
+#1555386685
+ll
+#1555386687
+cd apps/
+#1555386688
+ll
+#1555386693
+ll
+#1555386695
+cd ../
+#1555386696
+ll
+#1555386705
+ll
+#1555386712
+htop
+#1555384215
+vim hosts
+#1555483347
+ll
+#1555483350
+cd /home/
+#1555483351
+ll
+#1555483354
+cd web1/
+#1555483355
+ll
+#1555483360
+wget https://wap.cintel.com.cn/anti_theft/
+#1555551580
+ll
+#1555551771
+ll
+#1555551590
+vim /etc/nginx/conf.d/default.conf 
+#1555551779
+vim /etc/nginx/conf.d/default.conf 
+#1555553142
+ll
+#1555553148
+cd /etc/nginx/conf.d/
+#1555553148
+ll
+#1555553150
+cd ../
+#1555553150
+ll
+#1555553154
+vim nginx.conf 
+#1555553175
+ll
+#1555569650
+curl https://wap.cintel.com.cn/anti_theft -X POST -H "Content-Type:application/json" -d '{"requestNo":"ed2b64d6a4064a41a605f07534e993e4","clientId":"1f603303b82340e7acc8","publicKeyVersion":1,"data":"HKc4mNqPjfJxYO0uD7ruLTqzctkVOCewwiQo9uIaAybaHIKJqRZ5+Mi/EZ3NMAXre/PFQvEryRfJVg+q2M5A89BXvTqoEpiXYNfWOu5ZfaUhiyDnmpXkk09/j7pIoYN5KrwCrobzMKDkMYBjE+DW63x0WLV/CG2EbHhEui9jO0zosD9S3nXdzUqlMCCDhTJAHFvalAtuqlId/9r6wnD1PS6HflYC9AjmTjiRjlCU+oDm3E8smn18sy4ddshSzwOzDhRpxb9V4xXCcSNvNYGty/yAoIlzRee1VdlSyVOG3DGDO8vjcEj7PoRdF6EWCZSv3rEi4i47TSFABClA8Rx66gbpImMslAjla+dgnBTv0ogedZBJx/UoJ3IkI6qv9jpwnUKOPtYu51Y/MUULvkRwdL26OOYXypGZHP6mwN9PrBDvQ3bGD3PRr4DFvPkZrKL24Z6PYwzQrMBxvlvrq36Fx3iiS9RKDfara2T1wpXsdrY=","keyData":"WYCMd4PelOmchNTC8Y6VNqPniFQDXn5ng+yGaETs6vXthoY/q7CVR1lt5J9JpIy/fRiPtN/T6df4L8ASNI7UNZBpfgZJ/rmLOCnTgW56RtEyAQje503iwMyQlZz0QYceqg3iTy8b+/Gc7vpAcA1U3YOR3F9IKFbH8WV/E6sHNRw=","sign":"6967d79582449080b2b13ef18b0bbf16"}' -v
+#1555572765
+ll
+#1555572772
+vim conf.d/default.conf 
+#1555576899
+vim /etc/nginx/conf.d/default.conf 
+#1555913684
+lsdt
+#1555913686
+last
+#1555913689
+lastb
+#1555913729
+cd /var/log/
+#1555913730
+ll
+#1555913741
+ls -lh
+#1555913762
+vim btmp-20190401
+#1555913796
+vim btmp
+#1555913809
+echo > /var/log/btmp
+#1555913815
+echo > /var/log/wtmp
+#1555913816
+last
+#1555913819
+lastb
+#1555913831
+cd /opt/
+#1555913832
+ll
+#1555913844
+rm -rf test.txt 
+#1555913845
+ll
+#1555913847
+cat ~/.bash_history > a.txt
+#1555913848
+ls
+#1555913850
+ll
+#1555913854
+vim a.txt 
+#1555913879
+vim a.txt 
+#1555913905
+vim a.txt 
+#1555913928
+ll
+#1555913934
+rm -rf jdk-8u201-linux-x64.tar.gz 
+#1555913935
+ll
+#1555913938
+rm -rf a.txt 
+#1555913940
+ll
+#1555913941
+cd sh/
+#1555913942
+ll
+#1555913946
+cd ../
+#1555913946
+ll
+#1555913952
+cd containerd/
+#1555913953
+ll
+#1555913955
+cd bin/
+#1555913955
+ll
+#1555913959
+cd ../
+#1555913961
+cd lib/
+#1555913962
+ll
+#1555913964
+cd ../
+#1555913964
+ll
+#1555914018
+cd /opt/
+#1555914019
+ll
+#1555914021
+history

@@ -1,3 +1,13 @@
+#查看简单物理核心与线程
+    1、查看物理cpu个数
+	grep 'physical id' /proc/cpuinfo | sort -u
+
+	2、查看核心数量
+	grep 'core id' /proc/cpuinfo | sort -u | wc -l
+
+	3、查看线程数
+	grep 'processor' /proc/cpuinfo | sort -u | wc -l
+
 #date 设置时间
   hwclock --show      查看bios时间 
   hwclock -r     
