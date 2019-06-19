@@ -35,6 +35,8 @@ https://blog.csdn.net/huwh_/article/details/79242625
     5.1、yum -y install ruby rubygems
     
     因为gem install redis 会失败
+	
+	gem install redis -v 4.1.1
     
     5.2、安装rvm
         curl -L get.rvm.io | bash -s stable
@@ -68,8 +70,9 @@ https://blog.csdn.net/huwh_/article/details/79242625
     ./redis-server 7004/redis.conf 
     ./redis-server 7005/redis.conf 
     ./redis-server 7006/redis.conf 
-   6.3、安装redis
-    gem install redis
+	
+   6.3、安装redis -v 指定版本
+   gem install redis -v 4.1.1
      
    6.4、创建集群
     cd /redis-4.0.9/src/目录下
